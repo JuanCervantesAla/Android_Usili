@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "310351566609",
+    "project_id": "usiliv1--0-2",
+    "storage_bucket": "usiliv1--0-2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:310351566609:android:a2ef2f27c20d38ee74deb0",
+        "android_client_info": {
+          "package_name": "com.example.usiliv101"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "310351566609-fmsthrccu4ibj9bev08bcdbhn9umrovi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwKL1GlEHQKBCyS0k5cRy_dH39_nd7O5E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "310351566609-fmsthrccu4ibj9bev08bcdbhn9umrovi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
