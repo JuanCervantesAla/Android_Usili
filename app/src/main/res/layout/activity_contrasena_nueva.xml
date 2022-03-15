@@ -18,13 +18,53 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/txtTitulo_contrasenNueva"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="TextView"
+        android:layout_marginTop="52dp"
+        android:fontFamily="sans-serif-thin"
+        android:text="Contrasena Olvidada"
+        android:textColor="@color/design_default_color_error"
+        android:textSize="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+
+    <ImageButton
+        android:id="@+id/btnVolver_contrasenaNueva"
+        android:layout_width="39dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toStartOf="@+id/txtTitulo_contrasenNueva"
+        app:layout_constraintHorizontal_bias="0.101"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
+        app:srcCompat="?attr/actionModeCloseDrawable" />
+
+    <EditText
+        android:id="@+id/edtEmail_contrasenaNueva"
+        android:layout_width="333dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="60dp"
+        android:ems="10"
+        android:hint="Ingresa tu correo electronico o email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitulo_contrasenNueva" />
+
+    <Button
+        android:id="@+id/btncontrasenNueva"
+        android:layout_width="326dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/buttoncolor"
+        android:text="Cambiar contrasena"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtEmail_contrasenaNueva" />
 </androidx.constraintlayout.widget.ConstraintLayout>

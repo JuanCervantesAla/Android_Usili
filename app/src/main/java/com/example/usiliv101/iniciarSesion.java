@@ -25,6 +25,7 @@ public class iniciarSesion extends AppCompatActivity {
     Button btnbutton2;
     Button btnContinuar_iniciar_sesion;
     TextView txtOlvidada_iniciar_sesion;
+
     private EditText edtEmail_iniciar_sesion, edtPassword_iniciar_sesion;
 
     //Variables en Java implementacion Firebase
@@ -53,6 +54,7 @@ public class iniciarSesion extends AppCompatActivity {
                 loginUsuario();
             }
         });
+
         //Boton "Volver" al inicio
         btnVolver_iniciar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,16 +91,19 @@ public class iniciarSesion extends AppCompatActivity {
         if(correo.isEmpty()){
             edtEmail_iniciar_sesion.setError("¡Ingresa un correo por favor!");
             edtEmail_iniciar_sesion.requestFocus();
+            return;
         }
 
         if(contrasena.isEmpty()){
             edtPassword_iniciar_sesion.setError("¡Ingresa una contrasena por favor!");
             edtPassword_iniciar_sesion.requestFocus();
+            return;
         }
 
         if(contrasena.length()<6){
             edtPassword_iniciar_sesion.setError("¡La contrasena debe tener 6 caracteres minimo!");
             edtPassword_iniciar_sesion.requestFocus();
+            return;
         }
 
         mAuth.signInWithEmailAndPassword(correo,contrasena)

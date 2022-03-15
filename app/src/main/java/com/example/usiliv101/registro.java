@@ -142,6 +142,7 @@ public class registro extends AppCompatActivity  {
         if(password.length()<6){
             edtPassword_registro.setError("¡La contraseña debe tener al menos 6 caracteres!");
             edtPassword_registro.requestFocus();
+            return;
         }
         if(!passwordconfirm.equals(password)){
             edtPassword_registro.setError("¡Las contrasenas no coinciden!");

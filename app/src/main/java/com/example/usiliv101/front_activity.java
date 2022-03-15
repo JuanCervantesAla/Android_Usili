@@ -2,6 +2,8 @@ package com.example.usiliv101;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,20 +22,31 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+
 public class front_activity extends AppCompatActivity {
 
+    //Variables de firebase
     ImageView iconoperfil;
     private FirebaseUser usuario;
     private DatabaseReference reference;
     private String idUsuario;
+
+    //Variables del recycle
+    RecyclerView rvPrincipal1;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_front);
+        //Asocio variables Java con xml
         iconoperfil = findViewById(R.id.imgVperfil_front);
+        rvPrincipal1 = findViewById(R.id.rvPrincipal1);
 
+
+
+        //Iconos principales de home
         iconoperfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,6 +54,8 @@ public class front_activity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //INICIO DE RECUPERAR EL CORREO DE LA BASE DE DATOS
 
         //Obtengo al usuario actual
         usuario = FirebaseAuth.getInstance().getCurrentUser();
@@ -72,8 +87,14 @@ public class front_activity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(front_activity.this, "No pudimos recuperar los datos", Toast.LENGTH_SHORT).show();
             }
-        });
-    }
+        });//Fin de el correo en textView
+
+        //Inicio del recycle View
+
+
+    }//Fin de Create
+
+
     //Impido que el usuario regrese a la ventana anterior
     @Override
     public void onBackPressed(){

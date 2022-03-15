@@ -13,9 +13,22 @@ public class usuario {
             this.edad = edad;
         }
 
+    public String getCorreo() {
+        return correo;
+    }
 
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
 
-    /*
+    public String getEdad() {
+        return edad;
+    }
+
+    public void setEdad(String edad) {
+        this.edad = edad;
+    }
+        /*
     public String email;
     public String password;
 

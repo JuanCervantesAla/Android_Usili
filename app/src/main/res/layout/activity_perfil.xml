@@ -145,4 +145,40 @@
         app:layout_constraintTop_toBottomOf="@+id/btnEliminarCuenta_perfil" />
 
 
+
+    <TextView
+        android:id="@+id/txtCorreo_enPerfil"
+        android:layout_width="0dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="4dp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEmail_perfil" />
+
+    <TextView
+        android:id="@+id/txtEdad_enPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.019"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEdad_perfil" />
+
+    <ImageView
+        android:id="@+id/imgVFoto_perfil"
+        android:layout_width="196dp"
+        android:layout_height="159dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/view5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEdad_perfil"
+        tools:srcCompat="@tools:sample/avatars"
+        tools:visibility="visible" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,13 +6,15 @@
         <entry key="..\:/UsiliV101/app/src/main/res/drawable/backbuttoncolor.xml" value="0.3578125" />
         <entry key="..\:/UsiliV101/app/src/main/res/drawable/botoneslargos.xml" value="0.3578125" />
         <entry key="..\:/UsiliV101/app/src/main/res/drawable/buttoncolor.xml" value="0.3578125" />
+        <entry key="..\:/UsiliV101/app/src/main/res/drawable/frontlayout.xml" value="0.3578125" />
         <entry key="..\:/UsiliV101/app/src/main/res/drawable/littlebackground.xml" value="0.3578125" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_contrasena_nueva.xml" value="0.33559782608695654" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_front.xml" value="0.33" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_iniciar_sesion.xml" value="0.32563405797101447" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_perfil.xml" value="0.30978260869565216" />
+        <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_perfil.xml" value="0.25" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_registro.xml" value="0.33" />
+        <entry key="..\:/UsiliV101/app/src/main/res/layout/item.xml" value="0.3161231884057971" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/login.xml" value="0.33" />
       </map>
     </option>
