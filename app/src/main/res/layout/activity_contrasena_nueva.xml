@@ -6,40 +6,43 @@
     android:layout_height="match_parent"
     tools:context=".contrasenaNueva">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
-        android:layout_width="419dp"
-        android:layout_height="33dp"
-        android:background="@drawable/littlebackground"
+    <TextView
+        android:id="@+id/txtLogo_Perfil"
+        android:layout_width="170dp"
+        android:layout_height="77dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-black"
+        android:text="USILI"
+        android:textColor="#77DD77"
+        android:textSize="40dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.094"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtTitulo_contrasenNueva"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="104dp"
         android:fontFamily="sans-serif-thin"
         android:text="Contrasena Olvidada"
         android:textColor="@color/design_default_color_error"
         android:textSize="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/btnVolver_contrasenaNueva"
         android:layout_width="39dp"
         android:layout_height="28dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="420dp"
         app:layout_constraintEnd_toStartOf="@+id/txtTitulo_contrasenNueva"
-        app:layout_constraintHorizontal_bias="0.101"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/btncontrasenNueva"
         app:srcCompat="?attr/actionModeCloseDrawable" />
 
     <EditText

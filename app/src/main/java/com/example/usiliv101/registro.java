@@ -22,10 +22,8 @@ public class registro extends AppCompatActivity  {
     //Java objetos
     private FirebaseAuth mAuth;
 
-    Button btnVolver_registro;
-    Button btnLogin_registro;
-    Button btnRegistrarse_registro;
-    private EditText edtEmail_registro, edtEdad_registro,edtPassword_registro,edtPasswordConfirm_registro;
+    EditText edtEmail_Registro,edtPassword_Registro,edtPasswordConfirmar_Registro,edtEdad_Registro;
+    Button btnRegistrar_Registro,btnVolver_Registro;
 
 
     @Override
@@ -34,13 +32,12 @@ public class registro extends AppCompatActivity  {
         setContentView(R.layout.activity_registro);
 
         //Relacion Java xml
-        btnRegistrarse_registro = findViewById(R.id.btnRegistrarse_registro);
-        btnLogin_registro = findViewById(R.id.btnLogin_registro);
-        btnVolver_registro = findViewById(R.id.btnVolver_registro);
-        edtEmail_registro = findViewById(R.id.edtEmail_registro);
-        edtEdad_registro = findViewById(R.id.edtEdad_registro);
-        edtPassword_registro = findViewById(R.id.edtPassword_registro);
-        edtPasswordConfirm_registro = findViewById(R.id.edtPasswordConfirm_registro);
+        btnRegistrar_Registro = findViewById(R.id.btnRegistrar_Registro);
+        btnVolver_Registro = findViewById(R.id.btnVolver_Registro);
+        edtEmail_Registro = findViewById(R.id.edtEmail_Registro);
+        edtEdad_Registro = findViewById(R.id.edtEdad_Registro);
+        edtPassword_Registro = findViewById(R.id.edtPassword_Registro);
+        edtPasswordConfirmar_Registro = findViewById(R.id.edtPasswordConfirmar_Registro);
 
         //final EditText Edt_Email_registro = findViewById(R.id.edtEmail_registro);
         //final EditText Edt_Password_registro = findViewById(R.id.edtPassword_registro);
@@ -48,20 +45,13 @@ public class registro extends AppCompatActivity  {
         //usuarioDataB usuarioDataB = new usuarioDataB();
 
 
-        //Llamada al boton de registro a inicio de sesion
-        btnLogin_registro.setOnClickListener(new View.OnClickListener() {
+
+
+        //LLamada al boton Volver (Registro a Login)
+        btnVolver_Registro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(registro.this,iniciarSesion.class);
-                startActivity(intent);
-            }
-        });
-
-        //LLamada al boton Volver (Registro a Login)
-        btnVolver_registro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(registro.this,login.class);
                 startActivity(intent);
             }
         });
@@ -86,7 +76,7 @@ public class registro extends AppCompatActivity  {
 
          */
 
-        btnRegistrarse_registro.setOnClickListener(new View.OnClickListener() {
+        btnRegistrar_Registro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 registrarseRegistro();
@@ -97,16 +87,16 @@ public class registro extends AppCompatActivity  {
 
     //Metodo para el boton registrarse, validacion
     private void registrarseRegistro() {
-        String correo = edtEmail_registro.getText().toString().trim();//.trim elimina los espacios en blanco al inicio y final de la cadena
-        String edad = edtEdad_registro.getText().toString().trim();
-        String password = edtPassword_registro.getText().toString().trim();
-        String passwordconfirm = edtPasswordConfirm_registro.getText().toString().trim();
+        String correo = edtEmail_Registro.getText().toString().trim();//.trim elimina los espacios en blanco al inicio y final de la cadena
+        String edad = edtEdad_Registro.getText().toString().trim();
+        String password = edtPassword_Registro.getText().toString().trim();
+        String passwordconfirm = edtPasswordConfirmar_Registro.getText().toString().trim();
 
 
         //Validaciones de cada editText o caja de texto
         if(correo.isEmpty()){
-            edtEmail_registro.setError("¡Ingresa un correo por favor!");
-            edtEmail_registro.requestFocus();
+            edtEmail_Registro.setError("¡Ingresa un correo por favor!");
+            edtEmail_Registro.requestFocus();
             return;
         }
         /*
@@ -118,8 +108,8 @@ public class registro extends AppCompatActivity  {
         }*/
 
         if(edad.isEmpty()){
-            edtEdad_registro.setError("¡Ingresa una edad por favor!");
-            edtEdad_registro.requestFocus();
+            edtEdad_Registro.setError("¡Ingresa una edad por favor!");
+            edtEdad_Registro.requestFocus();
             return;
         }
         /*
@@ -130,23 +120,23 @@ public class registro extends AppCompatActivity  {
         }*/
 
         if (password.isEmpty()){
-            edtPassword_registro.setError("¡Ingresa una contrasena por favor!");
-            edtPassword_registro.requestFocus();
+            edtPassword_Registro.setError("¡Ingresa una contrasena por favor!");
+            edtPassword_Registro.requestFocus();
             return;
         }
         if(passwordconfirm.isEmpty()){
-            edtPasswordConfirm_registro.setError("¡Vuelve a ingresar la misma contrasena!");
-            edtPasswordConfirm_registro.requestFocus();
+            edtPasswordConfirmar_Registro.setError("¡Vuelve a ingresar la misma contrasena!");
+            edtPasswordConfirmar_Registro.requestFocus();
             return;
         }
         if(password.length()<6){
-            edtPassword_registro.setError("¡La contraseña debe tener al menos 6 caracteres!");
-            edtPassword_registro.requestFocus();
+            edtPassword_Registro.setError("¡La contraseña debe tener al menos 6 caracteres!");
+            edtPassword_Registro.requestFocus();
             return;
         }
         if(!passwordconfirm.equals(password)){
-            edtPassword_registro.setError("¡Las contrasenas no coinciden!");
-            edtPassword_registro.requestFocus();
+            edtPassword_Registro.setError("¡Las contrasenas no coinciden!");
+            edtPassword_Registro.requestFocus();
             return;
         }
 

@@ -21,10 +21,9 @@ import com.google.firebase.database.FirebaseDatabase;
 public class iniciarSesion extends AppCompatActivity {
 
     //Variables en Java
-    Button btnVolver_iniciar;
-    Button btnbutton2;
-    Button btnContinuar_iniciar_sesion;
-    TextView txtOlvidada_iniciar_sesion;
+    //private EditText edtEmail_enIniciar,edtPassword_enIniciar;
+    Button btnIniciarSesion_enIniciar;
+    TextView txtContrasenaOlvidada_enIniciar,txtRegistrarse_enIniciar;
 
     private EditText edtEmail_iniciar_sesion, edtPassword_iniciar_sesion;
 
@@ -38,33 +37,25 @@ public class iniciarSesion extends AppCompatActivity {
         setContentView(R.layout.activity_iniciar_sesion);
 
         //Relacion de las View xml y variables Java
-        txtOlvidada_iniciar_sesion = findViewById(R.id.txtOlvidada_iniciar_sesion);
-        btnVolver_iniciar = findViewById(R.id.btnVolver_iniciar_sesion);
-        btnbutton2 = findViewById(R.id.button2);
-        btnContinuar_iniciar_sesion = findViewById(R.id.btnContinuar_iniciar_sesion);
-        edtEmail_iniciar_sesion = findViewById(R.id.edtEmail_iniciar_sesion);
-        edtPassword_iniciar_sesion = findViewById(R.id.edtPassword_iniciar_sesion);
+        txtContrasenaOlvidada_enIniciar = findViewById(R.id.txtContrasenaOlvidada_enIniciar);
+        txtRegistrarse_enIniciar = findViewById(R.id.txtRegistrarse_enIniciar);
+        btnIniciarSesion_enIniciar = findViewById(R.id.btnIniciarSesion_enIniciar);
+        edtEmail_iniciar_sesion = findViewById(R.id.edtEmail_enIniciar);
+        edtPassword_iniciar_sesion = findViewById(R.id.edtPassword_enIniciar);
 
         //Inicializar la variable ruta de firebase
         mAuth = FirebaseAuth.getInstance();
 
-        btnContinuar_iniciar_sesion.setOnClickListener(new View.OnClickListener() {
+        btnIniciarSesion_enIniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 loginUsuario();
             }
         });
 
-        //Boton "Volver" al inicio
-        btnVolver_iniciar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(iniciarSesion.this,login.class);
-                startActivity(intent);
-            }
-        });
 
-        txtOlvidada_iniciar_sesion.setOnClickListener(new View.OnClickListener() {
+
+        txtContrasenaOlvidada_enIniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(iniciarSesion.this,contrasenaNueva.class);
@@ -73,7 +64,7 @@ public class iniciarSesion extends AppCompatActivity {
         });
 
         //Boton ir a registrar al usuario
-        btnbutton2.setOnClickListener(new View.OnClickListener() {
+        txtRegistrarse_enIniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(iniciarSesion.this,registro.class);
@@ -126,5 +117,8 @@ public class iniciarSesion extends AppCompatActivity {
                     }
                 });
     }
+    @Override
+    public void onBackPressed(){
 
+    }
 }

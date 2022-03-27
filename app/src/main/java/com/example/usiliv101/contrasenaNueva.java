@@ -74,7 +74,7 @@ public class contrasenaNueva extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(contrasenaNueva.this, "Revisa el mensaje que llegó a tu correo", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(contrasenaNueva.this,login.class);
+                    Intent intent = new Intent(contrasenaNueva.this,iniciarSesion.class);
                     startActivity(intent);
                 }
                 else{

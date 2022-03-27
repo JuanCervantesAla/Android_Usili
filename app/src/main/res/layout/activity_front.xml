@@ -5,57 +5,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".front_activity">
-
     <TextView
-        android:id="@+id/txtTitulo_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="sans-serif-thin"
-        android:text="Bienvenido seas"
-        android:textSize="30dp"
+        android:id="@+id/txtLogo_Front"
+        android:layout_width="170dp"
+        android:layout_height="77dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-black"
+        android:text="USILI"
+        android:textColor="#77DD77"
+        android:textSize="40dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.071"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtEmail_home"
+        android:id="@+id/txtTitulo_Front"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:textSize="25dp"
+        android:layout_marginTop="36dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="¡ B i e n v e n i d o !"
+        android:textColor="#26abff"
+        android:textSize="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTitulo_home" />
+        app:layout_constraintTop_toBottomOf="@+id/txtLogo_Front" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="425dp"
-        android:layout_height="82dp"
-        android:background="@drawable/frontlayout"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/txtSlogan_Front"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿Qué repararemos el dia de hoy?"
+        android:textSize="15dp"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageView
-            android:id="@+id/imgVperfil_front"
-            android:layout_width="68dp"
-            android:layout_height="62dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/profileicon" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvPrincipal1"
-        android:layout_width="376dp"
-        android:layout_height="89dp"
-        android:layout_marginTop="56dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEmail_home" />
+        app:layout_constraintTop_toBottomOf="@+id/txtTitulo_Front" />
+
+    <ImageView
+        android:id="@+id/imgVFoto_Front"
+        android:layout_width="86dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.867"
+        app:layout_constraintStart_toEndOf="@+id/txtLogo_Front"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?android:attr/galleryItemBackground" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -51,10 +51,10 @@ import java.util.UUID;
 public class perfil extends AppCompatActivity {
 
     //Atributos de Java
-    ImageView imgVFoto_perfil;
+    ImageView imgVFoto_Perfil,imgVFoto_Front;
     public TextView txtCorreo_enPerfil,txtEdad_enPerfil;
-    ImageButton imgbtnVolver_perfil;
-    Button btnCerrarsesion_perfil, btnCambiarontrasena_perfil;
+
+    Button btnCerrarsesion_perfil, btnCambiarontrasena_perfil,btnVolver_Perfil;
     //String para guardar fecha y hora en la que se guardo una foto de perfil
     String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 
@@ -76,12 +76,12 @@ public class perfil extends AppCompatActivity {
         setContentView(R.layout.activity_perfil);
 
         //Relacion entre los items xml y atributos de Java
-        imgbtnVolver_perfil = findViewById(R.id.imgbtnVolver_perfil);
-        btnCerrarsesion_perfil = findViewById(R.id.btnCerrarsesion_perfil);
-        btnCambiarontrasena_perfil = findViewById(R.id.btnCambiarcontrasena_perfil);
-        imgVFoto_perfil = findViewById(R.id.imgVFoto_perfil);
-        final TextView txtCorreo_enPerfil = findViewById(R.id.txtCorreo_enPerfil);
-        final TextView txtEdad_enPerfil = findViewById(R.id.txtEdad_enPerfil);
+        btnVolver_Perfil = findViewById(R.id.btnVolver_Perfil);
+        btnCerrarsesion_perfil = findViewById(R.id.btnCerrarSesion_Perfil);
+        btnCambiarontrasena_perfil = findViewById(R.id.btnCambiarContrasena_Perfil);
+        imgVFoto_Perfil = findViewById(R.id.imgVFoto_Perfil);
+        final TextView txtCorreo_enPerfil = findViewById(R.id.txtEmailRecipiente_Perfil);
+        final TextView txtEdad_enPerfil = findViewById(R.id.txtPasswordRecipiente_Perfil);
 
         //Inicialización de variables de firebase
         usuario = FirebaseAuth.getInstance().getCurrentUser();//Obtengo al usuario actual
@@ -92,7 +92,7 @@ public class perfil extends AppCompatActivity {
         reference3 = FirebaseStorage.getInstance().getReference("images/").child(idUsuario).child("profile.jpeg");//Referencia a la imagen de perfil del usuario
 
         //Regresa a la activity Home
-        imgbtnVolver_perfil.setOnClickListener(new View.OnClickListener() {
+        btnVolver_Perfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(perfil.this,front_activity.class);
@@ -105,7 +105,7 @@ public class perfil extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(perfil.this,login.class);
+                Intent intent = new Intent(perfil.this,iniciarSesion.class);
                 startActivity(intent);
             }
         });
@@ -120,7 +120,7 @@ public class perfil extends AppCompatActivity {
         });
 
         //LLamada al metodo escoger foto cuando se ahce clic en el imageView
-        imgVFoto_perfil.setOnClickListener(new View.OnClickListener() {
+        imgVFoto_Perfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 escogerFoto();
@@ -151,7 +151,9 @@ public class perfil extends AppCompatActivity {
                                                                                                     de tipo File que utilicé
                                                                                                    */
 
-                            imgVFoto_perfil.setImageBitmap(bitmap);/*
+                            imgVFoto_Perfil.setImageBitmap(bitmap);
+
+                            /*
                              Indico que al imageView le agregue la imagen reescalada que apunta al fichero
                              creado en memoria temporal que obtiene la ruta de mi base de datos
                              */
@@ -220,7 +222,7 @@ public class perfil extends AppCompatActivity {
             //Obten la ruta del fichero de la imagen la cual seleccione
             imagenUri = data.getData();
             //Setea en el imageView la imagen que selecciones desde su ruta apuntada
-            imgVFoto_perfil.setImageURI(imagenUri);
+            imgVFoto_Perfil.setImageURI(imagenUri);
             //Creo el metodo subir foto para subida a BD
             subirFoto(imagenUri);
         }
@@ -253,7 +255,7 @@ public class perfil extends AppCompatActivity {
                         //Ambos datos se guardarian en la llave obtenida algo como Woa743sdFDwas/Url y Woa743sdFDwas/Fecha por decir un ejemplo
                         reference2.child(pId).child("Url").setValue(G);//Subo en la rama de la llave un child que diga url
                         reference2.child(pId).child("Fecha").setValue(timeStamp);//Subo en la rama de la llave un child que diga url
-                        Glide.with(getApplicationContext()).load(uri).into(imgVFoto_perfil);
+                        Glide.with(getApplicationContext()).load(uri).into(imgVFoto_Perfil);
                         //reference2.child(pId).child("IdUsuario").setValue(idUsuario);
                         pd.dismiss();//Cierro el cuadro de dialogo abierto de subiendo imagen
                         Toast.makeText(perfil.this, "Se subió correctamente", Toast.LENGTH_SHORT).show();//Muestro un mensaje de que se subió correctamente

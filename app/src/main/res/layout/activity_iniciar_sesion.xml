@@ -6,194 +6,133 @@
     android:layout_height="match_parent"
     tools:context=".iniciarSesion">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="417dp"
-        android:layout_height="43dp"
-        android:background="@drawable/littlebackground"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="412dp"
-        android:layout_height="64dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@drawable/littlebackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
-        <Button
-            android:id="@+id/btnVolver_iniciar_sesion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/backbuttoncolor"
-            android:text="Volver"
-            android:textColor="@color/design_default_color_error"
+
+        <TextView
+            android:id="@+id/txtTitulo_iniciar_sesion"
+            android:layout_width="170dp"
+            android:layout_height="77dp"
+            android:layout_marginTop="120dp"
+            android:fontFamily="sans-serif-black"
+            android:text="USILI"
+            android:textColor="#77DD77"
+            android:textSize="60dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/txtCorreo_enIniciar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:text="Correo Electronico/ Email"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitulo_iniciar_sesion" />
+
+        <EditText
+            android:id="@+id/edtEmail_enIniciar"
+            android:layout_width="355dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:hint="¡Ingrese su correo!"
+            android:inputType="textEmailAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtCorreo_enIniciar" />
+
+        <TextView
+            android:id="@+id/txtPassword_enIniciar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Contrasena/Password"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.133"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtEmail_enIniciar" />
+
+        <EditText
+            android:id="@+id/edtPassword_enIniciar"
+            android:layout_width="346dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:hint="¡Ingrese su contrasena!"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.469"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPassword_enIniciar" />
+
+        <Button
+            android:id="@+id/btnIniciarSesion_enIniciar"
+            android:layout_width="303dp"
+            android:layout_height="61dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/buttoncolor"
+            android:text="INICIAR SESION"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtPassword_enIniciar" />
+
+        <TextView
+            android:id="@+id/txtContrasenaOlvidada_enIniciar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:text="Olvide la contrasena"
+            android:textColor="#5d58d7"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.122"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnIniciarSesion_enIniciar" />
+
+        <TextView
+            android:id="@+id/txtRegistrarse_enIniciar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Registrarse en la aplicacion"
+            android:textColor="#5d58d7"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.163"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtContrasenaOlvidada_enIniciar" />
+
+        <TextView
+            android:id="@+id/txtInvitado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Ingresar como invitado"
+            android:textColor="#5d58d7"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.135"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtRegistrarse_enIniciar" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:fontFamily="sans-serif-thin"
-        android:text="I n i c i o  de  s e s i o n "
-        android:textSize="27dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.435"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
-
-    <TextView
-        android:id="@+id/txtEmail_iniciar_sesion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Email / Correo Electronico"
-        android:textColor="@color/design_default_color_error"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.258"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <EditText
-        android:id="@+id/edtEmail_iniciar_sesion"
-        android:layout_width="292dp"
-        android:layout_height="49dp"
-        android:ems="10"
-        android:hint="Ingresa aqui el correo"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.537"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEmail_iniciar_sesion" />
-
-    <TextView
-        android:id="@+id/txtPassword_iniciar_sesion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="Password / Contrasena"
-        android:textColor="@color/design_default_color_error"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.242"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtEmail_iniciar_sesion" />
-
-    <EditText
-        android:id="@+id/edtPassword_iniciar_sesion"
-        android:layout_width="287dp"
-        android:layout_height="43dp"
-        android:ems="10"
-        android:hint="Ingresa aqui la contrasena"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPassword_iniciar_sesion" />
-
-    <Button
-        android:id="@+id/btnContinuar_iniciar_sesion"
-        android:layout_width="201dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="84dp"
-        android:background="@drawable/buttoncolor"
-        android:text="Continuar"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.457"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtPassword_iniciar_sesion" />
-
-    <TextView
-        android:id="@+id/txtHipervinculo_iniciar_sesion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="16dp"
-        android:text="No tengo una cuenta, clic en el boton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnContinuar_iniciar_sesion" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="130dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="140dp"
-        android:background="@drawable/buttoncolor"
-        android:text="Registrarse"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnContinuar_iniciar_sesion" />
-
-    <TextView
-        android:id="@+id/txtCompania"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:text="Usili Corp."
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.023"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/txtCompania2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:text="All the right Reserverd"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.031"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="72dp"
-        android:layout_height="71dp"
-        android:layout_marginTop="232dp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/txtContrasenaOlvidada_iniciar_sesion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="Olvide mi contrasea/Password ->"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.082"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtPassword_iniciar_sesion" />
-
-
-    <TextView
-        android:id="@+id/txtOlvidada_iniciar_sesion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="Clic aquí"
-        android:textColor="@color/design_default_color_error"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.385"
-        app:layout_constraintStart_toEndOf="@+id/txtContrasenaOlvidada_iniciar_sesion"
-        app:layout_constraintTop_toBottomOf="@+id/edtPassword_iniciar_sesion" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

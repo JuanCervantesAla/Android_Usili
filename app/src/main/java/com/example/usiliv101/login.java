@@ -16,8 +16,8 @@ public class login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        btnRegistro = findViewById(R.id.btnRegister);
-        btnIniciarSesion = findViewById(R.id.btnLogin);
+       // btnRegistro = findViewById(R.id.btnRegister);
+        //btnIniciarSesion = findViewById(R.id.btnLogin);
 
         btnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
