@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +38,7 @@ public class front_activity extends AppCompatActivity {
 
     //Variables de firebase
     ImageView iconoperfil,imgVFoto_Front;
+    Button btnAgregar_front;
     private FirebaseUser usuario;
     private DatabaseReference reference;
     private String idUsuario;
@@ -52,9 +54,16 @@ public class front_activity extends AppCompatActivity {
         setContentView(R.layout.activity_front);
         //Asocio variables Java con xml
         imgVFoto_Front = findViewById(R.id.imgVFoto_Front);
+        btnAgregar_front = findViewById(R.id.btnAgregar_front);
         //rvPrincipal1 = findViewById(R.id.rvPrincipal1);
 
-
+        btnAgregar_front.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent  = new Intent(front_activity.this,Agregar.class);
+                startActivity(intent);
+            }
+        });
 
         //Iconos principales de home
         imgVFoto_Front.setOnClickListener(new View.OnClickListener() {

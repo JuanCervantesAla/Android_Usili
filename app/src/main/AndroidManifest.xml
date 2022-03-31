@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UsiliV101">
         <activity
+            android:name=".Agregar"
+            android:exported="false" />
+        <activity
             android:name=".contrasenaNueva"
             android:exported="false" />
         <activity
@@ -32,9 +35,7 @@
             android:exported="false" />
         <activity
             android:name=".login"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"></activity>
     </application>
 
 </manifest>
