@@ -22,17 +22,17 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="15dp">
+
             <ImageView
                 android:id="@+id/imgV_enRV"
-                android:layout_width="100dp"
+                android:layout_width="120dp"
                 android:layout_height="100dp"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"
                 android:paddingLeft="14dp"
-                android:paddingRight="14dp"
-                android:layout_alignParentLeft="true"
-                ></ImageView>
+                android:paddingRight="14dp"></ImageView>
 
             <LinearLayout
                 android:id="@+id/linear_enRV"
@@ -53,7 +53,7 @@
                     android:layout_marginLeft="20dp"
                     android:text="--------"
                     android:textColor="@color/black"
-                    android:textSize="20dp"></TextView>
+                    android:textSize="17dp"></TextView>
 
                 <TextView
                     android:id="@+id/txtAutor_enRV"
@@ -61,24 +61,21 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:text="--------"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
+                    android:textColor="@color/black"
+                    ></TextView>
+
+                <TextView
+                    android:id="@+id/txtID_enRV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="--------"
+                    android:textSize="17dp"
                     android:textColor="@color/black"
                     ></TextView>
 
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/txtID_enRV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="6dp"
-                android:layout_marginRight="6dp"
-                android:text="--------"
-                android:textColor="@color/black"
-                android:textSize="20dp"></TextView>
 
         </RelativeLayout>
 
