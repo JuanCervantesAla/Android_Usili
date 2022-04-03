@@ -26,6 +26,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
@@ -50,6 +51,11 @@ public class Agregar extends AppCompatActivity {
     private FirebaseStorage storage;//Atributo contenedor de referencia al almacenamiento
     private StorageReference storageReference;//Atributo de contenedor de referencia al almacenamiento
     private DatabaseReference reference2;//Ruta para la tabla perfiles, se guarda la fecha y la URL vease linea 230
+    private DatabaseReference dbApoyo;
+    private DatabaseReference  referenciaURL;
+
+    final String randomkey  = UUID.randomUUID().toString();//Creo una llave random para almacenar las imagenes en una carpeta
+    private Object ValueEventListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +76,12 @@ public class Agregar extends AppCompatActivity {
         txtEscondido_Agregar = findViewById(R.id.txtEscondido_Agregar);
         imgVImagen_Agregar = findViewById(R.id.imgVImagen_Agregar);
 
+        //Select * from Apoyo where
+
+        dbApoyo = FirebaseDatabase.getInstance().getReference("Apoyo");
+
+
+
 
         //Boton para volver a la activity front
         btnVolver_Agregar.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +99,7 @@ public class Agregar extends AppCompatActivity {
             public void onClick(View view) {
 
                 subirDatos();
+
             }
         });
 
@@ -126,7 +139,7 @@ public class Agregar extends AppCompatActivity {
     }
 
     //************METODO PARA SUBIDA DE FOTO
-    private void subirFoto(Uri uri,int id) {
+    private void subirFoto(Uri uri,String nuevoId) {
         //Creo un cuadro de dialogo parecido a un JOptionPane en Java normal
         final ProgressDialog pd = new ProgressDialog(this);
         //Asigno un titulo al dialogo
@@ -135,7 +148,7 @@ public class Agregar extends AppCompatActivity {
         pd.show();
 
 
-        final String randomkey  = UUID.randomUUID().toString();//Creo una llave random para almacenar las imagenes en una carpeta
+
         //Obtengo la referencia de la imagen
         final StorageReference riversRef = storageReference.child("articulos/"+idUsuario+"/"+randomkey);
         //Obtengo la referencia de mi almacenamiento guardado en la rama(child) images/(carpeta) dentro de la carpeta del Id del usuario y
@@ -152,12 +165,13 @@ public class Agregar extends AppCompatActivity {
                         String pId = reference2.push().getKey();//Obtengo la llave de referencia con la cual se sube los datos a la BD
                         //Ambos datos se guardarian en la llave obtenida algo como Woa743sdFDwas/Url y Woa743sdFDwas/Fecha por decir un ejemplo
                         reference2.child(pId).child("Url").setValue(G);//Subo en la rama de la llave un child que diga url
-                        reference2.child(pId).child("Id").setValue(id);//Subo en la rama de la llave un child que diga url
+                        reference2.child(pId).child("Id").setValue(nuevoId);//Subo en la rama de la llave un child que diga url
+                        txtEscondido_Agregar.setText(G);
                         Glide.with(getApplicationContext()).load(uri).into(imgVImagen_Agregar);
                         //reference2.child(pId).child("IdUsuario").setValue(idUsuario);
                         pd.dismiss();//Cierro el cuadro de dialogo abierto de subiendo imagen
                         Toast.makeText(Agregar.this, "Se subió correctamente", Toast.LENGTH_SHORT).show();//Muestro un mensaje de que se subió correctamente
-
+                        Consulta(nuevoId);
                     }
                 });
             }
@@ -178,17 +192,74 @@ public class Agregar extends AppCompatActivity {
 
     }
 
+    private void CargarBase(String titulo, String pasos, String materiales,String autor, String nuevoId, String enlace){
+        Articulos articulo =  new Articulos(titulo,pasos,materiales,autor,nuevoId,enlace);
+        FirebaseDatabase.getInstance().getReference("Articulos")
+                .child(randomkey).setValue(articulo).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(Agregar.this, "Se agregó tu articulo :)", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Agregar.this,front_activity.class);
+                    startActivity(intent);
+                }
+                //Si no
+                else{
+                    Toast.makeText(Agregar.this, "Fallo en agregar el articulo", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    private void Consulta(String nuevoId){
+        String titulo =  edtETitulo_Agregar.getText().toString().trim();
+        String materiales = edtEMateriales_Agregar.getText().toString().trim();
+        String pasos = edtEPasos_Agregar.getText().toString().trim();
+        String autor = "Juan Cervantes";
+        String enlace=" ";
+        Query query = FirebaseDatabase.getInstance().getReference("Apoyo")
+                .orderByChild("Id")
+                .equalTo(nuevoId);
+
+
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()) {
+                    Apoyo poyo = snapshot.getValue(Apoyo.class);//Creamos un objeto de tipo usuario de la clase usuario
+                    //Creamos objeto snapshot que obtenga los valores almacenados del constructor de la clase usuario
+                    //Crea variables para almacenar los que encontraste de correo y edad del constructor apuntando hacia la BD
+                    String url = poyo.Url;
+                    txtEscondido_Agregar.setText(url);
+                    Toast.makeText(Agregar.this, "Se encontraron Datos", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(Agregar.this, "Nada we", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(Agregar.this, "NONO", Toast.LENGTH_SHORT).show();
+            }
+        });
+        enlace = txtEscondido_Agregar.getText().toString().trim();
+        CargarBase(titulo,pasos,materiales,autor,nuevoId,enlace);
+
+    }
 
     private void subirDatos() {
         String titulo =  edtETitulo_Agregar.getText().toString().trim();
         String materiales = edtEMateriales_Agregar.getText().toString().trim();
         String pasos = edtEPasos_Agregar.getText().toString().trim();
-        String autor = "Hola";
-        String enlace = "";
-        final String randomkey  = UUID.randomUUID().toString();//Creo una llave random para almacenar las imagenes en una carpeta
+        String autor = "Juan Cervantes";
+        String enlace=" ";
+        String pId = reference2.push().getKey();
+        //final String randomkey  = UUID.randomUUID().toString();//Creo una llave random para almacenar las imagenes en una carpeta
         final int min = 1000;
         final int max = 2000;
         final int id = new Random().nextInt((max - min) + 1) + min;
+        final String nuevoId = String.valueOf(id);
 
 
         if(titulo.isEmpty()){
@@ -213,25 +284,8 @@ public class Agregar extends AppCompatActivity {
             edtEPasos_Agregar.requestFocus();
             return;
         }
-         subirFoto(imagenUri,id);
 
-        Articulos articulo =  new Articulos(titulo,pasos,materiales,autor,id,enlace);
-        FirebaseDatabase.getInstance().getReference("Articulos")
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(randomkey).setValue(articulo).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(Agregar.this, "Se agregó tu articulo :)", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Agregar.this,front_activity.class);
-                    startActivity(intent);
-                }
-                //Si no
-                else{
-                    Toast.makeText(Agregar.this, "Fallo en agregar el articulo", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
+        subirFoto(imagenUri,nuevoId);
 
     }
 }

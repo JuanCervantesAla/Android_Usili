@@ -24,13 +24,12 @@
         android:id="@+id/txtTitulo_Front"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="sans-serif-condensed-medium"
         android:text="¡ B i e n v e n i d o !"
         android:textColor="#26abff"
         android:textSize="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtLogo_Front" />
 
@@ -60,11 +59,31 @@
         android:id="@+id/btnAgregar_front"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="288dp"
-        android:layout_marginBottom="140dp"
+        android:layout_marginStart="280dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/buttoncolor"
         android:text="Agregar"
         android:textColor="@color/white"
-        android:background="@drawable/buttoncolor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvArticulos_Front"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitulo_Front" />
+
+    <TextView
+        android:id="@+id/txtEscondido_Front"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="92dp"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

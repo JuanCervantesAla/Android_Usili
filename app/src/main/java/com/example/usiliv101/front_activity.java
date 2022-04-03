@@ -23,6 +23,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
@@ -37,10 +38,15 @@ import java.util.ArrayList;
 public class front_activity extends AppCompatActivity {
 
     //Variables de firebase
+    RecyclerView recyclerView;
+    AdaptadorRV adaptadorRV;
+    ArrayList<Articulos> list;
+
     ImageView iconoperfil,imgVFoto_Front;
     Button btnAgregar_front;
     private FirebaseUser usuario;
     private DatabaseReference reference;
+    private DatabaseReference referenceRV;
     private String idUsuario;
     private StorageReference reference3;//Referencia hacia el almacenamiento, la imagen de perfil
 
@@ -55,6 +61,7 @@ public class front_activity extends AppCompatActivity {
         //Asocio variables Java con xml
         imgVFoto_Front = findViewById(R.id.imgVFoto_Front);
         btnAgregar_front = findViewById(R.id.btnAgregar_front);
+        recyclerView = findViewById(R.id.rvArticulos_Front);
         //rvPrincipal1 = findViewById(R.id.rvPrincipal1);
 
         btnAgregar_front.setOnClickListener(new View.OnClickListener() {
@@ -158,6 +165,31 @@ public class front_activity extends AppCompatActivity {
         });//Fin de el correo en textView*/
 
         //Inicio del recycle View
+
+    recyclerView.setHasFixedSize(true);
+    recyclerView.setLayoutManager(new LinearLayoutManager(this ));
+
+    list = new ArrayList<>();
+    adaptadorRV= new AdaptadorRV(this,list);
+    recyclerView.setAdapter(adaptadorRV);
+    referenceRV= FirebaseDatabase.getInstance().getReference("Articulos");
+
+    referenceRV.addValueEventListener(new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot snapshot) {
+            for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+                Articulos art = dataSnapshot.getValue(Articulos.class);
+                list.add(art);
+            }
+            adaptadorRV.notifyDataSetChanged();
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError error) {
+
+        }
+    });
+
 
 
     }//Fin de Create

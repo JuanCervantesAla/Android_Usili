@@ -2,11 +2,11 @@ package com.example.usiliv101;
 
 public class Articulos {
 
-    public String titulo, pasos, materiales, autor, enlace;
-    public Integer id;
+    public String titulo, pasos, materiales, autor,id, enlace;
+
 
     public Articulos(){}
-    public Articulos(String titulo, String pasos, String materiales, String autor, Integer id,String enalce) {
+    public Articulos(String titulo, String pasos, String materiales, String autor, String id,String enlace) {
         this.titulo = titulo;
         this.pasos = pasos;
         this.materiales = materiales;
@@ -23,12 +23,8 @@ public class Articulos {
         this.enlace = enlace;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getTitulo() {
