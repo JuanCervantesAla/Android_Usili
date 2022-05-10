@@ -91,7 +91,7 @@ public class registro extends AppCompatActivity  {
         String edad = edtEdad_Registro.getText().toString().trim();
         String password = edtPassword_Registro.getText().toString().trim();
         String passwordconfirm = edtPasswordConfirmar_Registro.getText().toString().trim();
-
+        int edadNumero = Integer.valueOf(edad);
 
         //Validaciones de cada editText o caja de texto
         if(correo.isEmpty()){
@@ -99,25 +99,25 @@ public class registro extends AppCompatActivity  {
             edtEmail_Registro.requestFocus();
             return;
         }
-        /*
+
         //Valida de la paqueteria patterns si el correo es un correo de verdad
-        if(Patterns.EMAIL_ADDRESS.matcher(correo).matches()){
-            edtEmail_registro.setError("¡Por favor ingresa un correo autentico!");
-            edtEmail_registro.requestFocus();
+        if(!Patterns.EMAIL_ADDRESS.matcher(correo).matches()){
+            edtEmail_Registro.setError("¡Por favor ingresa un correo autentico!");
+            edtEmail_Registro.requestFocus();
             return;
-        }*/
+        }
 
         if(edad.isEmpty()){
             edtEdad_Registro.setError("¡Ingresa una edad por favor!");
             edtEdad_Registro.requestFocus();
             return;
         }
-        /*
-        if(edadNumero<=0){
-            edtEdad_registro.setError("!Ingresa una edad real¡");
-            edtEdad_registro.requestFocus();
+
+        if(edadNumero<=0 || edadNumero>90){
+            edtEdad_Registro.setError("!Ingresa una edad real¡");
+            edtEdad_Registro.requestFocus();
             return;
-        }*/
+        }
 
         if (password.isEmpty()){
             edtPassword_Registro.setError("¡Ingresa una contrasena por favor!");

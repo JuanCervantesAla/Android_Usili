@@ -14,10 +14,12 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.MyViewHolder> {
+public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.MyViewHolder> implements View.OnClickListener {
 
     Context context;
     ArrayList<Articulos> list;
+
+    private View.OnClickListener listener;
 
 
     public AdaptadorRV(Context context, ArrayList<Articulos> list) {
@@ -29,18 +31,22 @@ public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.MyViewHolder> 
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v  =  LayoutInflater.from(context).inflate(R.layout.item,parent,false);
+        v.setOnClickListener(this);
         return new MyViewHolder(v);
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
+        //apoyoPost pollo = new apoyoPost();
         Articulos art = list.get(position);
         holder.txtTitulo_enRV.setText(art.getTitulo());
         holder.txtID_enRV.setText(art.getId());
         holder.txtAutor_enRV.setText(art.getAutor());
         //holder.txtMateriales_enRV.setText(art.getMateriales());
         //holder.txtPasos_enRV.setText(art.getPasos());
+        //pollo.setTitulo(art.autor);
 
         Glide.with(context).load(list.get(position).getEnlace()).into(holder.imgV_enRV);
 
@@ -49,6 +55,17 @@ public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.MyViewHolder> 
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(listener!=null){
+            listener.onClick(view);
+        }
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{

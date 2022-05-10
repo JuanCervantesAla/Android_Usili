@@ -183,12 +183,22 @@ public class front_activity extends AppCompatActivity {
             }
             adaptadorRV.notifyDataSetChanged();
         }
-
         @Override
         public void onCancelled(@NonNull DatabaseError error) {
 
         }
     });
+
+    adaptadorRV.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(front_activity.this,Post.class);
+            startActivity(intent);
+
+        }
+    });
+
+
 
 
 

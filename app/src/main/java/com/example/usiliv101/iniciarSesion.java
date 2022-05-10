@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -81,6 +82,12 @@ public class iniciarSesion extends AppCompatActivity {
 
         if(correo.isEmpty()){
             edtEmail_iniciar_sesion.setError("¡Ingresa un correo por favor!");
+            edtEmail_iniciar_sesion.requestFocus();
+            return;
+        }
+
+        if(!Patterns.EMAIL_ADDRESS.matcher(correo).matches()){
+            edtEmail_iniciar_sesion.setError("¡Por favor ingresa un correo autentico!");
             edtEmail_iniciar_sesion.requestFocus();
             return;
         }

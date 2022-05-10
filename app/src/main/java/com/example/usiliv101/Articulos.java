@@ -1,18 +1,21 @@
 package com.example.usiliv101;
 
-public class Articulos {
+import java.io.Serializable;
 
-    public String titulo, pasos, materiales, autor,id, enlace;
+public class Articulos implements Serializable {
+
+    public String titulo, pasos, materiales, autor,id, enlace,mayorTrece;
 
 
     public Articulos(){}
-    public Articulos(String titulo, String pasos, String materiales, String autor, String id,String enlace) {
+    public Articulos(String titulo, String pasos, String materiales, String autor, String id,String enlace,String mayorTrece) {
         this.titulo = titulo;
         this.pasos = pasos;
         this.materiales = materiales;
         this.autor=autor;
         this.id = id;
         this.enlace=enlace;
+        this.mayorTrece=mayorTrece;
     }
 
     public String getEnlace() {
@@ -57,5 +60,13 @@ public class Articulos {
 
     public void setAutor(String autor) {
         this.autor = autor;
+    }
+
+    public String getMayorTrece() {
+        return mayorTrece;
+    }
+
+    public void setMayorTrece(String mayorTrece) {
+        this.mayorTrece = mayorTrece;
     }
 }
