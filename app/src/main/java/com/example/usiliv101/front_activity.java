@@ -35,7 +35,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class front_activity extends AppCompatActivity {
+public class front_activity extends AppCompatActivity implements Interfaz {
 
     //Variables de firebase
     RecyclerView recyclerView;
@@ -170,7 +170,7 @@ public class front_activity extends AppCompatActivity {
     recyclerView.setLayoutManager(new LinearLayoutManager(this ));
 
     list = new ArrayList<>();
-    adaptadorRV= new AdaptadorRV(this,list);
+    adaptadorRV= new AdaptadorRV(this,list,this);
     recyclerView.setAdapter(adaptadorRV);
     referenceRV= FirebaseDatabase.getInstance().getReference("Articulos");
 
@@ -188,15 +188,19 @@ public class front_activity extends AppCompatActivity {
 
         }
     });
-
+    /*
     adaptadorRV.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(front_activity.this,Post.class);
             startActivity(intent);
-
+            Articulos art = new Articulos();
+            String ID = art.getId();
+            Toast.makeText(front_activity.this, ID, Toast.LENGTH_SHORT).show();
+            Post objetito = new Post();
+            objetito.recibirDatosFront(ID);
         }
-    });
+    });*/
 
 
 
@@ -209,5 +213,15 @@ public class front_activity extends AppCompatActivity {
     @Override
     public void onBackPressed(){
 
+    }
+
+    @Override
+    public void clickEnItem(int posicion) {
+        Intent intent = new Intent(front_activity.this,Post.class);
+        intent.putExtra("Identificador",list.get(posicion).getId());
+        intent.putExtra("Autor",list.get(posicion).getAutor());
+        intent.putExtra("Pasos",list.get(posicion).getPasos());
+        intent.putExtra("Materiales",list.get(posicion).getMateriales());
+        startActivity(intent);
     }
 }

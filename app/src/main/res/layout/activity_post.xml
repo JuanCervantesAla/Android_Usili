@@ -54,4 +54,30 @@
         app:layout_constraintStart_toEndOf="@+id/txtLogo_Post"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+        android:id="@+id/txtMateriales_Post"
+        android:layout_width="276dp"
+        android:layout_height="118dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.23"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitulo_Post" />
+
+    <EditText
+        android:id="@+id/txtPasos_Post"
+        android:layout_width="268dp"
+        android:layout_height="95dp"
+        android:layout_marginTop="44dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.216"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMateriales_Post" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

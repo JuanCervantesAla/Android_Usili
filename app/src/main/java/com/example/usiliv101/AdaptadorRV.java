@@ -14,17 +14,21 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.MyViewHolder> implements View.OnClickListener {
+public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.MyViewHolder> implements View.OnClickListener,Interfaz{
 
+    //Variable para contener todo lo que tenga en interfaz
+    private final Interfaz interfaz;
     Context context;
     ArrayList<Articulos> list;
 
     private View.OnClickListener listener;
 
 
-    public AdaptadorRV(Context context, ArrayList<Articulos> list) {
+    public AdaptadorRV(Context context, ArrayList<Articulos> list,Interfaz interfaz) {
         this.context = context;
         this.list = list;
+        //Creo el this para tomar los datos de la interfaz
+        this.interfaz=interfaz;
     }
 
     @NonNull
@@ -32,7 +36,7 @@ public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.MyViewHolder> 
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v  =  LayoutInflater.from(context).inflate(R.layout.item,parent,false);
         v.setOnClickListener(this);
-        return new MyViewHolder(v);
+        return new MyViewHolder(v,interfaz);
 
     }
 
@@ -68,12 +72,17 @@ public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.MyViewHolder> 
         }
     }
 
+    @Override
+    public void clickEnItem(int posicion) {
+
+    }
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView txtTitulo_enRV,txtAutor_enRV,txtID_enRV,txtMateriales_enRV,txtPasos_enRV;
         ImageView imgV_enRV;
 
-        public MyViewHolder(@NonNull View itemView) {
+        //Agrego el atributo de interfaz
+        public MyViewHolder(@NonNull View itemView,Interfaz interfaz) {
             super(itemView);
 
             txtTitulo_enRV = itemView.findViewById(R.id.txtTitulo_enRV);
@@ -83,6 +92,17 @@ public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.MyViewHolder> 
             //txtMateriales_enRV = itemView.findViewById(R.id.txtMateriales_enRV);
             //txtPasos_enRV = itemView.findViewById(R.id.txtPasos_enRV);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(interfaz !=null){
+                        int pos = getAdapterPosition();
+                        if(pos!= RecyclerView.NO_POSITION){
+                            interfaz.clickEnItem(pos);
+                        }
+                    }
+                }
+            });
         }
     }
 
