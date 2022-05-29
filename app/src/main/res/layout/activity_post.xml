@@ -88,7 +88,7 @@
         android:id="@+id/slider"
         android:layout_width="424dp"
         android:layout_height="323dp"
-        android:layout_marginTop="244dp"
+        android:layout_marginTop="44dp"
         app:iss_auto_cycle="true"
         app:iss_delay="0"
         app:iss_period="2500"

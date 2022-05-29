@@ -263,92 +263,89 @@ public class Agregar extends AppCompatActivity {
     }
 
     //*************Metodo subida de PDF
-    private void subirPdf(Uri data){
-        //Creo un cuadro de dialogo parecido a un JOptionPane en Java normal
-        final ProgressDialog pd = new ProgressDialog(this);
-        //Asigno un titulo al dialogo
-        pd.setTitle("Subiendo pdf...");
-        //Muestro el cuadro de dialogo
-        pd.show();
-
-//***********************PDF***************************
-
+    private void subirPdf(Uri data,String G1, String G2, String nuevoId, String G3,Uri videoUri) {
         //Obtengo la referencia de la imagen
-        final StorageReference riversRef = storageReference.child("articulos/"+"pdf"+"/"+randomkey+".pdf");
-        riversRef.putFile(data)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Task<Uri> uriTask=taskSnapshot.getStorage().getDownloadUrl();
-                        while(!uriTask.isComplete());
-                            Uri uri = uriTask.getResult();
-                            pdfClass pdfClass = new pdfClass(edtPdf_Agregar.getText().toString(),uri.toString());
-                            String llave = referenciaPdf.push().getKey();
-                            referenciaPdf.child(llave).child("Pdf").setValue(pdfClass);
-                            pd.dismiss();//Cierro el cuadro de dialogo abierto de subiendo imagen
-                            Toast.makeText(Agregar.this, "Se subió tu pdf", Toast.LENGTH_SHORT).show();//Muestro un mensaje de que se subió correctamente
+        final StorageReference riversRef = storageReference.child("articulos/"+idUsuario+"/"+"pdf/"+randomkey);
+        //Obtengo la referencia de mi almacenamiento guardado en la rama(child) images/(carpeta) dentro de la carpeta del Id del usuario y
+        // asu vez quiero que la imagen se llame profile.jpeg esto permite que no se repita mas imagenes de perfil y todas las imagenes subidas se reemplazen por una nueva
 
-                    }
-                }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+        riversRef.putFile(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {//Guardo la ruta de la imagen en la rama, la ruta que obtuvimos en el Activity OnResult
             @Override
-            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {//obtengo de la referencia la Url con la cual se sube el archivo
+                    @Override
+                    public void onSuccess(Uri uri) {//Si esto es exitoso
+
+                        Perfiles p = new Perfiles();//Creo un objeto p de las clase perfiles
+                        String G = uri.toString();//Ingreso en un atributo la url subida en String
+                        String pId = reference2.push().getKey();//Obtengo la llave de referencia con la cual se sube los datos a la BD
+                        //Ambos datos se guardarian en la llave obtenida algo como Woa743sdFDwas/Url y Woa743sdFDwas/Fecha por decir un ejemplo
+                        reference2.child(pId).child("Pdf").setValue(G);//Subo en la rama de la llave un child que diga url
+                        reference2.child(pId).child("Idpdf").setValue(nuevoId);//Subo en la rama de la llave un child que diga url
+                        //txtEscondido_Agregar.setText(G);
+                        //Consulta(G1,G2,G3,G,nuevoId);
+                        subirVideo(videoUri,G1,G2,G3,G,nuevoId);
+                    }
+                });
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {//Mientras se hace el meotod Succes
                 double progressPercent = (100.00 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());//Obten los milisegundos en que tarda la imagen en cargar
-                pd.setMessage("Progress: "+(int)progressPercent + "%");//Conviertelo a un porcentaje del 0 al 100 porciento y muestralo en el caudro de dialogo
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
-            public void onFailure(@NonNull Exception e) {
-                pd.dismiss();//Cierra el cuadro de dialogo
-                Toast.makeText(getApplicationContext(),"No se pudo subir el pdf",Toast.LENGTH_LONG).show();//Muestra un mensaje de eror
+            public void onFailure(@NonNull Exception e) {//Si falla
+                Toast.makeText(getApplicationContext(),"No se pudo subir la imagen",Toast.LENGTH_LONG).show();//Muestra un mensaje de eror
             }
         });
     }
 
 
-    private void subirVideo(Uri uri2){
-        //Creo un cuadro de dialogo parecido a un JOptionPane en Java normal
-        final ProgressDialog pd = new ProgressDialog(this);
-        //Asigno un titulo al dialogo
-        pd.setTitle("Subiendo Video...");
-        //Muestro el cuadro de dialogo
-        pd.show();
 
-//***********************PDF***************************
-
+    private void subirVideo(Uri uri,String G1,String G2,String G3,String pdf, String nuevoId){
         //Obtengo la referencia de la imagen
         final StorageReference riversRef = storageReference.child("articulos/"+"videos"+"/"+randomkey);
-        riversRef.putFile(uri2)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+        //Obtengo la referencia de mi almacenamiento guardado en la rama(child) images/(carpeta) dentro de la carpeta del Id del usuario y
+        // asu vez quiero que la imagen se llame profile.jpeg esto permite que no se repita mas imagenes de perfil y todas las imagenes subidas se reemplazen por una nueva
+
+        riversRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {//Guardo la ruta de la imagen en la rama, la ruta que obtuvimos en el Activity OnResult
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {//obtengo de la referencia la Url con la cual se sube el archivo
                     @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Task<Uri> uriTask=taskSnapshot.getStorage().getDownloadUrl();
-                        while(!uriTask.isComplete());
-                        Uri uri = uriTask.getResult();
-                        videoClass videito = new videoClass("video",uri2.toString());
-                        String llave = referenciaPdf.push().getKey();
-                        referenciaPdf.child(llave).child("Video").setValue(videito);
-                        pd.dismiss();//Cierro el cuadro de dialogo abierto de subiendo imagen
-                        //Toast.makeText(Agregar.this, "Se subió tu video", Toast.LENGTH_SHORT).show();//Muestro un mensaje de que se subió correctamente
+                    public void onSuccess(Uri uri) {//Si esto es exitoso
+
+                        Perfiles p = new Perfiles();//Creo un objeto p de las clase perfiles
+                        String G = uri.toString();//Ingreso en un atributo la url subida en String
+                        String pId = reference2.push().getKey();//Obtengo la llave de referencia con la cual se sube los datos a la BD
+                        //Ambos datos se guardarian en la llave obtenida algo como Woa743sdFDwas/Url y Woa743sdFDwas/Fecha por decir un ejemplo
+                        reference2.child(pId).child("Video").setValue(G);//Subo en la rama de la llave un child que diga url
+                        reference2.child(pId).child("Idvideo").setValue(nuevoId);//Subo en la rama de la llave un child que diga url
+                        //txtEscondido_Agregar.setText(G);
+                        Consulta(G1,G2,G3,pdf,G,nuevoId);
 
                     }
-                }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                });
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
             @Override
-            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {//Mientras se hace el meotod Succes
                 double progressPercent = (100.00 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());//Obten los milisegundos en que tarda la imagen en cargar
-                pd.setMessage("Progress: "+(int)progressPercent + "%");//Conviertelo a un porcentaje del 0 al 100 porciento y muestralo en el caudro de dialogo
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
-            public void onFailure(@NonNull Exception e) {
-                pd.dismiss();//Cierra el cuadro de dialogo
-                //Toast.makeText(getApplicationContext(),"No se pudo subir el pdf",Toast.LENGTH_LONG).show();//Muestra un mensaje de eror
+            public void onFailure(@NonNull Exception e) {//Si falla
+                Toast.makeText(getApplicationContext(),"No se pudo subir la imagen",Toast.LENGTH_LONG).show();//Muestra un mensaje de eror
             }
         });
     }
 
 
     //************METODO PARA SUBIDA DE VIDEO y FOTO
-    private void subirFoto(Uri uri,String nuevoId,Uri uri2,Uri uri3) {
+    private void subirFoto(Uri uri,String nuevoId,Uri uri2,Uri uri3,Uri uripdf,Uri videoUri) {
         //Creo un cuadro de dialogo parecido a un JOptionPane en Java normal
         final ProgressDialog pd = new ProgressDialog(this);
         //Asigno un titulo al dialogo
@@ -378,7 +375,7 @@ public class Agregar extends AppCompatActivity {
                         Glide.with(getApplicationContext()).load(uri).into(imgVImagen_Agregar);
                         //reference2.child(pId).child("IdUsuario").setValue(idUsuario);
                         Toast.makeText(Agregar.this, "Se subió correctamente", Toast.LENGTH_SHORT).show();//Muestro un mensaje de que se subió correctamente
-                        subirFoto2(G,nuevoId,uri2,uri3);
+                        subirFoto2(G,nuevoId,uri2,uri3,uripdf,videoUri);
                     }
                 });
             }
@@ -397,7 +394,7 @@ public class Agregar extends AppCompatActivity {
         });
     }
 
-    private void subirFoto2(String G1,String nuevoId,Uri uri,Uri uri3) {
+    private void subirFoto2(String G1,String nuevoId,Uri uri,Uri uri3,Uri uripdf,Uri videoUri) {
 
         //Obtengo la referencia de la imagen
         final StorageReference riversRef = storageReference.child("articulos/"+idUsuario+"/"+"terceras/"+randomkey);
@@ -421,7 +418,7 @@ public class Agregar extends AppCompatActivity {
                         Glide.with(getApplicationContext()).load(uri).into(imgVImagen2_Agregar);
                         //reference2.child(pId).child("IdUsuario").setValue(idUsuario);
                         Toast.makeText(Agregar.this, "Se subió correctamente", Toast.LENGTH_SHORT).show();//Muestro un mensaje de que se subió correctamente
-                        subirFoto3(G1,G,nuevoId,uri3);
+                        subirFoto3(G1,G,nuevoId,uri3,uripdf,videoUri);
                     }
                 });
             }
@@ -439,7 +436,7 @@ public class Agregar extends AppCompatActivity {
         });
     }
 
-    private void subirFoto3(String G1, String G2,String nuevoId,Uri uri) {
+    private void subirFoto3(String G1, String G2,String nuevoId,Uri uri,Uri pdfUri,Uri videoUri) {
 
         //Obtengo la referencia de la imagen
         final StorageReference riversRef = storageReference.child("articulos/"+idUsuario+"/"+randomkey);
@@ -463,7 +460,8 @@ public class Agregar extends AppCompatActivity {
                         Glide.with(getApplicationContext()).load(uri).into(imgVImagen3_Agregar);
                         //reference2.child(pId).child("IdUsuario").setValue(idUsuario);
                         Toast.makeText(Agregar.this, "Se subió correctamente", Toast.LENGTH_SHORT).show();//Muestro un mensaje de que se subió correctamente
-                        Consulta(G1,G2,G,nuevoId);
+                        //Consulta(G1,G2,G,nuevoId);
+                        subirPdf(pdfUri,G1,G2,nuevoId,G,videoUri);
                     }
                 });
             }
@@ -483,7 +481,7 @@ public class Agregar extends AppCompatActivity {
 
 
 
-    public void Consulta(String Enlace, String Enlace2, String Enlace3, String nuevoId){
+    public void Consulta(String Enlace, String Enlace2, String Enlace3,String Pdf,String Video, String nuevoId){
         usuario usua = new usuario();
         String titulo = "Titulo: " + edtETitulo_Agregar.getText().toString().trim();
         String materiales = "Materiales: " + edtEMateriales_Agregar.getText().toString().trim();
@@ -498,15 +496,17 @@ public class Agregar extends AppCompatActivity {
         String enlace = Enlace;
         String enlace2 = Enlace2;
         String enlace3 = Enlace3;
+        String pdf = Pdf;
+        String video = Video;
         txtEscondido4_Agregar.setText(enlace);
         txtEscondido_Agregar.setText(enlace2);
-        CargarBase(titulo, pasos, materiales, autor, nuevoId, enlace, mayorTrece, enlace2,enlace3);
+        CargarBase(titulo, pasos, materiales, autor, nuevoId, enlace, mayorTrece, enlace2,enlace3,pdf,video);
     }
 
 
 
-    private void CargarBase(String titulo, String pasos, String materiales,String autor, String nuevoId, String enlace,String mayorTrece,String enlace2,String enlace3){
-        Articulos articulo =  new Articulos(titulo,pasos,materiales,autor,nuevoId,enlace,mayorTrece,enlace2,enlace3);
+    private void CargarBase(String titulo, String pasos, String materiales,String autor, String nuevoId, String enlace,String mayorTrece,String enlace2,String enlace3,String Pdf,String video){
+        Articulos articulo =  new Articulos(titulo,pasos,materiales,autor,nuevoId,enlace,mayorTrece,enlace2,enlace3,Pdf,video);
         FirebaseDatabase.getInstance().getReference("Articulos")
                 .child(randomkey).setValue(articulo).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -559,9 +559,9 @@ public class Agregar extends AppCompatActivity {
             edtEPasos_Agregar.requestFocus();
             return;
         }
-        subirFoto(imagenUri, nuevoId,imagenUri2,imagenUri3);
-        subirPdf(pdfUri);
-        subirVideo(videoUri);
+        subirFoto(imagenUri, nuevoId,imagenUri2,imagenUri3,pdfUri,videoUri);
+        //subirPdf(pdfUri);
+
     }
 }
 

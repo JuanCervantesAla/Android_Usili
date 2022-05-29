@@ -4,11 +4,11 @@ import java.io.Serializable;
 
 public class Articulos implements Serializable {
 
-    public String titulo, pasos, materiales, autor,id, enlace,mayorTrece,enlace2,enlace3;
+    public String titulo, pasos, materiales, autor,id, enlace,mayorTrece,enlace2,enlace3,pdf,video;
 
 
     public Articulos(){}
-    public Articulos(String titulo, String pasos, String materiales, String autor, String id,String enlace,String mayorTrece,String enlace2,String enlace3) {
+    public Articulos(String titulo, String pasos, String materiales, String autor, String id,String enlace,String mayorTrece,String enlace2,String enlace3,String pdf,String video) {
         this.titulo = titulo;
         this.pasos = pasos;
         this.materiales = materiales;
@@ -18,6 +18,8 @@ public class Articulos implements Serializable {
         this.enlace2=enlace2;
         this.enlace3 = enlace3;
         this.mayorTrece=mayorTrece;
+        this.pdf = pdf;
+        this.video = video;
     }
 
     public void setId(String id) {
@@ -90,5 +92,21 @@ public class Articulos implements Serializable {
 
     public void setEnlace3(String enlace3) {
         this.enlace3 = enlace3;
+    }
+
+    public String getPdf() {
+        return pdf;
+    }
+
+    public void setPdf(String pdf) {
+        this.pdf = pdf;
+    }
+
+    public String getVideo() {
+        return video;
+    }
+
+    public void setVideo(String video) {
+        this.video = video;
     }
 }
