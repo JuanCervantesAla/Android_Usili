@@ -11,7 +11,7 @@
     >
 
     <LinearLayout
-        android:layout_width="300dp"
+        android:layout_width="500dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:orientation="vertical"
@@ -25,8 +25,8 @@
 
             <ImageView
                 android:id="@+id/imgV_enRV"
-                android:layout_width="120dp"
-                android:layout_height="100dp"
+                android:layout_width="163dp"
+                android:layout_height="92dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
@@ -48,32 +48,33 @@
 
                 <TextView
                     android:id="@+id/txtTitulo_enRV"
-                    android:layout_width="wrap_content"
+                    android:layout_width="162dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:text="--------"
+                    android:fontFamily="sans-serif-condensed"
                     android:textColor="@color/black"
                     android:textSize="17dp"></TextView>
 
                 <TextView
                     android:id="@+id/txtAutor_enRV"
-                    android:layout_width="wrap_content"
+                    android:layout_width="161dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:text="--------"
-                    android:textSize="17dp"
+                    android:fontFamily="sans-serif-condensed"
                     android:textColor="@color/black"
-                    ></TextView>
+                    android:textSize="17dp"></TextView>
 
                 <TextView
                     android:id="@+id/txtID_enRV"
-                    android:layout_width="wrap_content"
+                    android:layout_width="162dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:text="--------"
-                    android:textSize="17dp"
+                    android:fontFamily="sans-serif-condensed"
                     android:textColor="@color/black"
-                    ></TextView>
+                    android:textSize="17dp"></TextView>
 
             </LinearLayout>
 

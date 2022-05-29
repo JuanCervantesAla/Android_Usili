@@ -39,8 +39,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text=""
+        android:fontFamily="cursive"
         android:textColor="@color/black"
-        android:textSize="30dp"
+        android:textSize="38dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtLogo_Post" />
@@ -49,35 +50,52 @@
         android:id="@+id/txtEscondido_Post"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:visibility="invisible"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.096"
         app:layout_constraintStart_toEndOf="@+id/txtLogo_Post"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/txtMateriales_Post"
-        android:layout_width="276dp"
-        android:layout_height="118dp"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
+    <TextView
+        android:id="@+id/txtPasos_Post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:textSize="26dp"
+        android:text=""
+        android:fontFamily="sans-serif-black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.23"
+        app:layout_constraintHorizontal_bias="0.066"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMateriales_Post" />
+
+    <TextView
+        android:id="@+id/txtMateriales_Post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:textSize="26dp"
+        android:text=""
+        android:fontFamily="sans-serif-black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.066"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTitulo_Post" />
 
-    <EditText
-        android:id="@+id/txtPasos_Post"
-        android:layout_width="268dp"
-        android:layout_height="95dp"
-        android:layout_marginTop="44dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
+    <com.denzcoskun.imageslider.ImageSlider
+        android:id="@+id/slider"
+        android:layout_width="424dp"
+        android:layout_height="323dp"
+        android:layout_marginTop="244dp"
+        app:iss_auto_cycle="true"
+        app:iss_delay="0"
+        app:iss_period="2500"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.216"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtMateriales_Post" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPasos_Post" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

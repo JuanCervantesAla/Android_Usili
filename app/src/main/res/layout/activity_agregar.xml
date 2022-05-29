@@ -10,8 +10,8 @@
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         tools:context=".Agregar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -102,8 +102,8 @@
 
             <EditText
                 android:id="@+id/edtEMateriales_Agregar"
-                android:layout_width="340dp"
-                android:layout_height="48dp"
+                android:layout_width="359dp"
+                android:layout_height="158dp"
                 android:layout_marginTop="4dp"
                 android:ems="10"
                 android:gravity="start|top"
@@ -127,8 +127,8 @@
 
             <EditText
                 android:id="@+id/edtEPasos_Agregar"
-                android:layout_width="338dp"
-                android:layout_height="52dp"
+                android:layout_width="357dp"
+                android:layout_height="142dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:gravity="start|top"
@@ -157,6 +157,28 @@
                 app:layout_constraintHorizontal_bias="0.289"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edtEPasos_Agregar"
+                app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+            <ImageView
+                android:id="@+id/imgVImagen2_Agregar"
+                android:layout_width="325dp"
+                android:layout_height="228dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.375"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgVImagen_Agregar"
+                app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+            <ImageView
+                android:id="@+id/imgVImagen3_Agregar"
+                android:layout_width="325dp"
+                android:layout_height="228dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.375"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgVImagen2_Agregar"
                 app:srcCompat="@android:drawable/ic_menu_gallery" />
 
             <TextView
@@ -189,7 +211,7 @@
                 android:text="4° Agrega un video demostrativo"
                 android:textSize="18dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgVImagen_Agregar" />
+                app:layout_constraintTop_toBottomOf="@+id/imgVImagen3_Agregar" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -260,6 +282,27 @@
                 android:text="15+"
                 app:layout_constraintStart_toEndOf="@+id/btnVolver_Agregar"
                 app:layout_constraintTop_toBottomOf="@+id/edtPdf_Agregar" />
+
+            <TextView
+                android:id="@+id/txtEscondido3_Agregar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                tools:layout_editor_absoluteX="231dp"
+                tools:layout_editor_absoluteY="39dp"
+                app:layout_constraintBottom_toBottomOf="@+id/txtEscondido2_Agregar"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+            <TextView
+                android:id="@+id/txtEscondido4_Agregar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                tools:layout_editor_absoluteX="231dp"
+                tools:layout_editor_absoluteY="39dp"
+                app:layout_constraintBottom_toBottomOf="@+id/txtEscondido2_Agregar"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

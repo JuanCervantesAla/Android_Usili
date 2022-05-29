@@ -133,11 +133,6 @@ public class front_activity extends AppCompatActivity implements Interfaz {
             e.printStackTrace();
         }
 
-
-
-
-
-
 /*
         final TextView txtEmail_home = findViewById(R.id.txtEmail_home);
 
@@ -202,10 +197,6 @@ public class front_activity extends AppCompatActivity implements Interfaz {
         }
     });*/
 
-
-
-
-
     }//Fin de Create
 
 
@@ -219,9 +210,12 @@ public class front_activity extends AppCompatActivity implements Interfaz {
     public void clickEnItem(int posicion) {
         Intent intent = new Intent(front_activity.this,Post.class);
         intent.putExtra("Identificador",list.get(posicion).getId());
+        intent.putExtra("Titulo",list.get(posicion).getTitulo());
         intent.putExtra("Autor",list.get(posicion).getAutor());
         intent.putExtra("Pasos",list.get(posicion).getPasos());
         intent.putExtra("Materiales",list.get(posicion).getMateriales());
+        intent.putExtra("Enlace",list.get(posicion).getEnlace());
+        intent.putExtra("Enlace2",list.get(posicion).getEnlace2());
         startActivity(intent);
     }
 }

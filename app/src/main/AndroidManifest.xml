@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UsiliV101">
         <activity
+            android:name=".postPdfComentario"
+            android:exported="false" />
+        <activity
+            android:name=".postVideo"
+            android:exported="false" />
+        <activity
             android:name=".Agregar_2"
             android:exported="false" />
         <activity

@@ -4,18 +4,31 @@ import java.io.Serializable;
 
 public class Articulos implements Serializable {
 
-    public String titulo, pasos, materiales, autor,id, enlace,mayorTrece;
+    public String titulo, pasos, materiales, autor,id, enlace,mayorTrece,enlace2;
 
 
     public Articulos(){}
-    public Articulos(String titulo, String pasos, String materiales, String autor, String id,String enlace,String mayorTrece) {
+    public Articulos(String titulo, String pasos, String materiales, String autor, String id,String enlace,String mayorTrece,String enlace2) {
         this.titulo = titulo;
         this.pasos = pasos;
         this.materiales = materiales;
         this.autor=autor;
         this.id = id;
         this.enlace=enlace;
+        this.enlace2=enlace2;
         this.mayorTrece=mayorTrece;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getEnlace2() {
+        return enlace2;
+    }
+
+    public void setEnlace2(String enlace2) {
+        this.enlace2 = enlace2;
     }
 
     public String getEnlace() {
