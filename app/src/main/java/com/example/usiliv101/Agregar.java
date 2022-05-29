@@ -50,6 +50,7 @@ public class Agregar extends AppCompatActivity {
     VideoView vV_Video;
     public Uri imagenUri;
     public Uri imagenUri2;
+    public Uri imagenUri3;
     public Uri pdfUri;
     public Uri videoUri;
 
@@ -95,6 +96,7 @@ public class Agregar extends AppCompatActivity {
         imgVImagen3_Agregar= findViewById(R.id.imgVImagen3_Agregar);
         txtEscondido3_Agregar = findViewById(R.id.txtEscondido3_Agregar);
         txtEscondido4_Agregar = findViewById(R.id.txtEscondido4_Agregar);
+        imgVImagen3_Agregar = findViewById(R.id.imgVImagen3_Agregar);
 
 
         sw_Agregar.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -161,6 +163,13 @@ public class Agregar extends AppCompatActivity {
             }
         });
 
+        imgVImagen3_Agregar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                escogerFoto3();
+            }
+        });
+
     }
 
     private void seleccionarVideo(){
@@ -199,6 +208,17 @@ public class Agregar extends AppCompatActivity {
         startActivityForResult(intent,7);//Guardo el numero de request para identificar que accion se hizo
     }
 
+    private void escogerFoto3() {
+        //Creo la intencion
+        Intent intent = new Intent();
+        //Defino de que tipo es la intencion y el tipo de imagenes a guardar, el /* indica que todo tipo de imagenes
+        intent.setType("image/*");
+        //Declaro el tipo de accion para la intencion, es decir deseo traer datos
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        //Inicio la actividad para retraer info, parecido a cuando abro la camara, solo que abre la aplicacion de archivos por defecto
+        startActivityForResult(intent,14);//Guardo el numero de request para identificar que accion se hizo
+    }
+
     //Cuando se realizo la apertura de la app de archivos y se escogió una foto... en resultado se hace....
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -217,6 +237,15 @@ public class Agregar extends AppCompatActivity {
             imagenUri2 = data.getData();
             //Setea en el imageView la imagen que selecciones desde su ruta apuntada
             imgVImagen2_Agregar.setImageURI(imagenUri2);
+            //Creo el metodo subir foto para subida a BD
+//            subirFoto(imagenUri);
+        }
+
+        if(requestCode == 14 && resultCode==RESULT_OK && data!=null && data.getData()!=null){
+            //Obten la ruta del fichero de la imagen la cual seleccione
+            imagenUri3 = data.getData();
+            //Setea en el imageView la imagen que selecciones desde su ruta apuntada
+            imgVImagen3_Agregar.setImageURI(imagenUri3);
             //Creo el metodo subir foto para subida a BD
 //            subirFoto(imagenUri);
         }
@@ -319,7 +348,7 @@ public class Agregar extends AppCompatActivity {
 
 
     //************METODO PARA SUBIDA DE VIDEO y FOTO
-    private void subirFoto(Uri uri,String nuevoId,Uri uri2) {
+    private void subirFoto(Uri uri,String nuevoId,Uri uri2,Uri uri3) {
         //Creo un cuadro de dialogo parecido a un JOptionPane en Java normal
         final ProgressDialog pd = new ProgressDialog(this);
         //Asigno un titulo al dialogo
@@ -349,7 +378,7 @@ public class Agregar extends AppCompatActivity {
                         Glide.with(getApplicationContext()).load(uri).into(imgVImagen_Agregar);
                         //reference2.child(pId).child("IdUsuario").setValue(idUsuario);
                         Toast.makeText(Agregar.this, "Se subió correctamente", Toast.LENGTH_SHORT).show();//Muestro un mensaje de que se subió correctamente
-                        subirFoto2(uri2,nuevoId,G);
+                        subirFoto2(G,nuevoId,uri2,uri3);
                     }
                 });
             }
@@ -368,10 +397,10 @@ public class Agregar extends AppCompatActivity {
         });
     }
 
-    private void subirFoto2(Uri uri,String nuevoId,String G2) {
+    private void subirFoto2(String G1,String nuevoId,Uri uri,Uri uri3) {
 
         //Obtengo la referencia de la imagen
-        final StorageReference riversRef = storageReference.child("articulos/"+idUsuario+"/"+randomkey);
+        final StorageReference riversRef = storageReference.child("articulos/"+idUsuario+"/"+"terceras/"+randomkey);
         //Obtengo la referencia de mi almacenamiento guardado en la rama(child) images/(carpeta) dentro de la carpeta del Id del usuario y
         // asu vez quiero que la imagen se llame profile.jpeg esto permite que no se repita mas imagenes de perfil y todas las imagenes subidas se reemplazen por una nueva
 
@@ -389,10 +418,10 @@ public class Agregar extends AppCompatActivity {
                         reference2.child(pId).child("Url2").setValue(G);//Subo en la rama de la llave un child que diga url
                         reference2.child(pId).child("Id2").setValue(nuevoId);//Subo en la rama de la llave un child que diga url
                         //txtEscondido_Agregar.setText(G);
-                        Glide.with(getApplicationContext()).load(uri).into(imgVImagen_Agregar);
-                        Consulta(nuevoId,G,G2);
+                        Glide.with(getApplicationContext()).load(uri).into(imgVImagen2_Agregar);
                         //reference2.child(pId).child("IdUsuario").setValue(idUsuario);
                         Toast.makeText(Agregar.this, "Se subió correctamente", Toast.LENGTH_SHORT).show();//Muestro un mensaje de que se subió correctamente
+                        subirFoto3(G1,G,nuevoId,uri3);
                     }
                 });
             }
@@ -408,11 +437,53 @@ public class Agregar extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"No se pudo subir la imagen",Toast.LENGTH_LONG).show();//Muestra un mensaje de eror
             }
         });
-
-
     }
 
-    public void Consulta(String nuevoId,String Enlace,String Enlace2){
+    private void subirFoto3(String G1, String G2,String nuevoId,Uri uri) {
+
+        //Obtengo la referencia de la imagen
+        final StorageReference riversRef = storageReference.child("articulos/"+idUsuario+"/"+randomkey);
+        //Obtengo la referencia de mi almacenamiento guardado en la rama(child) images/(carpeta) dentro de la carpeta del Id del usuario y
+        // asu vez quiero que la imagen se llame profile.jpeg esto permite que no se repita mas imagenes de perfil y todas las imagenes subidas se reemplazen por una nueva
+
+        riversRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {//Guardo la ruta de la imagen en la rama, la ruta que obtuvimos en el Activity OnResult
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {//obtengo de la referencia la Url con la cual se sube el archivo
+                    @Override
+                    public void onSuccess(Uri uri) {//Si esto es exitoso
+
+                        Perfiles p = new Perfiles();//Creo un objeto p de las clase perfiles
+                        String G = uri.toString();//Ingreso en un atributo la url subida en String
+                        String pId = reference2.push().getKey();//Obtengo la llave de referencia con la cual se sube los datos a la BD
+                        //Ambos datos se guardarian en la llave obtenida algo como Woa743sdFDwas/Url y Woa743sdFDwas/Fecha por decir un ejemplo
+                        reference2.child(pId).child("Url3").setValue(G);//Subo en la rama de la llave un child que diga url
+                        reference2.child(pId).child("Id3").setValue(nuevoId);//Subo en la rama de la llave un child que diga url
+                        //txtEscondido_Agregar.setText(G);
+                        Glide.with(getApplicationContext()).load(uri).into(imgVImagen3_Agregar);
+                        //reference2.child(pId).child("IdUsuario").setValue(idUsuario);
+                        Toast.makeText(Agregar.this, "Se subió correctamente", Toast.LENGTH_SHORT).show();//Muestro un mensaje de que se subió correctamente
+                        Consulta(G1,G2,G,nuevoId);
+                    }
+                });
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {//Mientras se hace el meotod Succes
+                double progressPercent = (100.00 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());//Obten los milisegundos en que tarda la imagen en cargar
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {//Si falla
+                Toast.makeText(getApplicationContext(),"No se pudo subir la imagen",Toast.LENGTH_LONG).show();//Muestra un mensaje de eror
+            }
+        });
+    }
+
+
+
+    public void Consulta(String Enlace, String Enlace2, String Enlace3, String nuevoId){
         usuario usua = new usuario();
         String titulo = "Titulo: " + edtETitulo_Agregar.getText().toString().trim();
         String materiales = "Materiales: " + edtEMateriales_Agregar.getText().toString().trim();
@@ -426,15 +497,16 @@ public class Agregar extends AppCompatActivity {
         }
         String enlace = Enlace;
         String enlace2 = Enlace2;
+        String enlace3 = Enlace3;
         txtEscondido4_Agregar.setText(enlace);
         txtEscondido_Agregar.setText(enlace2);
-        CargarBase(titulo, pasos, materiales, autor, nuevoId, enlace, mayorTrece, enlace2);
+        CargarBase(titulo, pasos, materiales, autor, nuevoId, enlace, mayorTrece, enlace2,enlace3);
     }
 
 
 
-    private void CargarBase(String titulo, String pasos, String materiales,String autor, String nuevoId, String enlace,String mayorTrece,String enlace2){
-        Articulos articulo =  new Articulos(titulo,pasos,materiales,autor,nuevoId,enlace,mayorTrece,enlace2);
+    private void CargarBase(String titulo, String pasos, String materiales,String autor, String nuevoId, String enlace,String mayorTrece,String enlace2,String enlace3){
+        Articulos articulo =  new Articulos(titulo,pasos,materiales,autor,nuevoId,enlace,mayorTrece,enlace2,enlace3);
         FirebaseDatabase.getInstance().getReference("Articulos")
                 .child(randomkey).setValue(articulo).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -487,7 +559,7 @@ public class Agregar extends AppCompatActivity {
             edtEPasos_Agregar.requestFocus();
             return;
         }
-        subirFoto(imagenUri, nuevoId,imagenUri2);
+        subirFoto(imagenUri, nuevoId,imagenUri2,imagenUri3);
         subirPdf(pdfUri);
         subirVideo(videoUri);
     }

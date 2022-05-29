@@ -62,6 +62,7 @@ public class Post extends AppCompatActivity {
         String TITULO = getIntent().getStringExtra("Titulo");
         String ENLACE = getIntent().getStringExtra("Enlace");
         String ENLACE2 = getIntent().getStringExtra("Enlace2");
+        String ENLACE3 = getIntent().getStringExtra("Enlace3");
 
 
         //Relacion de los atributos y objetos xml
@@ -91,6 +92,7 @@ public class Post extends AppCompatActivity {
 
         slideModels.add(new SlideModel(ENLACE.toString(),ScaleTypes.FIT));
         slideModels.add(new SlideModel(ENLACE2.toString(),ScaleTypes.FIT));
+        slideModels.add(new SlideModel(ENLACE3.toString(),ScaleTypes.FIT));
         imageSlider.setImageList(slideModels);
 
     }
