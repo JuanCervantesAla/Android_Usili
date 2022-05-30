@@ -217,6 +217,8 @@ public class front_activity extends AppCompatActivity implements Interfaz {
         intent.putExtra("Enlace",list.get(posicion).getEnlace());
         intent.putExtra("Enlace2",list.get(posicion).getEnlace2());
         intent.putExtra("Enlace3",list.get(posicion).getEnlace3());
+        intent.putExtra("EnlaceV",list.get(posicion).getVideo());
+        intent.putExtra("EnlaceP",list.get(posicion).getPdf());
         startActivity(intent);
     }
 }
