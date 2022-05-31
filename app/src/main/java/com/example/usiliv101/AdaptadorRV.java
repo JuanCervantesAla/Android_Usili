@@ -11,6 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -20,6 +23,8 @@ public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.MyViewHolder> 
     private final Interfaz interfaz;
     Context context;
     ArrayList<Articulos> list;
+    ArrayList<Articulos> list2;
+
 
     private View.OnClickListener listener;
 
@@ -29,7 +34,10 @@ public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.MyViewHolder> 
         this.list = list;
         //Creo el this para tomar los datos de la interfaz
         this.interfaz=interfaz;
+        list2  =new ArrayList<>();
+        list2.addAll(list);
     }
+
 
     @NonNull
     @Override
@@ -39,6 +47,7 @@ public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.MyViewHolder> 
         return new MyViewHolder(v,interfaz);
 
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
@@ -55,6 +64,7 @@ public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.MyViewHolder> 
         Glide.with(context).load(list.get(position).getEnlace()).into(holder.imgV_enRV);
 
     }
+
 
     @Override
     public int getItemCount() {

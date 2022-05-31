@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="?attr/bgc"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".perfil">
@@ -62,6 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:textSize="20dp"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.053"
@@ -73,7 +75,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Contrasena/Password"
+        android:text="Edad del usuario"
         android:textColor="@color/black"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -86,6 +88,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:textSize="20dp"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.053"
@@ -98,6 +101,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="GUARDADOS"
+        android:visibility="invisible"
         android:textColor="#5d58d7"
         android:textSize="17dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -109,12 +113,11 @@
         android:id="@+id/btnCerrarSesion_Perfil"
         android:layout_width="187dp"
         android:layout_height="46dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="76dp"
         android:background="@drawable/buttoncolor"
         android:text="Cerrar Sesion"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtGuardados_Perfil" />
 
@@ -122,11 +125,12 @@
         android:id="@+id/btnCambiarContrasena_Perfil"
         android:layout_width="192dp"
         android:layout_height="55dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/buttoncolor"
         android:text="Cambiar contrasena"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnCerrarSesion_Perfil" />
 
@@ -141,4 +145,15 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="ON/OFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.736"
+        app:layout_constraintStart_toEndOf="@+id/txtLogo_Perfil"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

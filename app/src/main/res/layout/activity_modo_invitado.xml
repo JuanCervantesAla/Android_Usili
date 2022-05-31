@@ -10,13 +10,13 @@
         android:id="@+id/txtLogo_Front"
         android:layout_width="170dp"
         android:layout_height="77dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="36dp"
         android:fontFamily="sans-serif-black"
         android:text="USILI"
         android:textColor="#77DD77"
-        android:textSize="40dp"
+        android:textSize="49dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintHorizontal_bias="0.569"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,38 +44,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTitulo_Front" />
 
-    <ImageView
-        android:id="@+id/imgVFoto_Front"
-        android:layout_width="86dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.867"
-        app:layout_constraintStart_toEndOf="@+id/txtLogo_Front"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="?android:attr/galleryItemBackground" />
-
-    <Button
-        android:id="@+id/btnAgregar_front"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="288dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/buttoncolor"
-        android:text="Agregar"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvArticulos_Front"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search" />
+        app:layout_constraintTop_toBottomOf="@+id/btnRegistrar_Invitado" />
 
     <TextView
         android:id="@+id/txtEscondido_Front"
@@ -87,13 +65,31 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/search"
-        android:layout_width="318dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="20dp"
+    <TextView
+        android:id="@+id/txtNegocio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="¿Qué te pareció?,¿Te Nos unes?"
+        android:fontFamily="sans-serif-black"
+        android:textColor="#77DD77"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtSlogan_Front" />
+
+    <Button
+        android:id="@+id/btnRegistrar_Invitado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="¡Estoy dentro!"
+        android:background="@drawable/buttoncolor"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNegocio" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

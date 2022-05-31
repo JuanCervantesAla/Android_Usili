@@ -9,9 +9,12 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import androidx.appcompat.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +32,9 @@ import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+
+
 import org.w3c.dom.Text;
 
 import java.io.File;
@@ -42,8 +48,10 @@ public class front_activity extends AppCompatActivity implements Interfaz {
     AdaptadorRV adaptadorRV;
     ArrayList<Articulos> list;
 
+    SearchView searchView;
+
     ImageView iconoperfil,imgVFoto_Front;
-    Button btnAgregar_front;
+    Button btnAgregar_front,btnMis_front;
     private FirebaseUser usuario;
     private DatabaseReference reference;
     private DatabaseReference referenceRV;
@@ -62,6 +70,7 @@ public class front_activity extends AppCompatActivity implements Interfaz {
         imgVFoto_Front = findViewById(R.id.imgVFoto_Front);
         btnAgregar_front = findViewById(R.id.btnAgregar_front);
         recyclerView = findViewById(R.id.rvArticulos_Front);
+        searchView = findViewById(R.id.search);
         //rvPrincipal1 = findViewById(R.id.rvPrincipal1);
 
         btnAgregar_front.setOnClickListener(new View.OnClickListener() {
@@ -197,8 +206,39 @@ public class front_activity extends AppCompatActivity implements Interfaz {
         }
     });*/
 
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                buscar(s);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                buscar(s);
+                return false;
+            }
+        });
+
+
+
     }//Fin de Create
 
+
+    private void buscar(String s){
+        ArrayList<Articulos> listaBusqueda = new ArrayList<>();
+        for(Articulos objetito: list){
+            if(objetito.getTitulo().toLowerCase().contains(s.toLowerCase())){
+                listaBusqueda.add(objetito);
+            }
+            if(objetito.getAutor().toLowerCase().contains(s.toLowerCase())){
+                listaBusqueda.add(objetito);
+            }
+        }
+        AdaptadorRV adaptadorRV = new AdaptadorRV(this,listaBusqueda,this);
+        recyclerView.setAdapter(adaptadorRV);
+
+    }
 
     //Impido que el usuario regrese a la ventana anterior
     @Override
@@ -221,4 +261,5 @@ public class front_activity extends AppCompatActivity implements Interfaz {
         intent.putExtra("EnlaceP",list.get(posicion).getPdf());
         startActivity(intent);
     }
+
 }

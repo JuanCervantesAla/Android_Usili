@@ -24,7 +24,7 @@ public class iniciarSesion extends AppCompatActivity {
     //Variables en Java
     //private EditText edtEmail_enIniciar,edtPassword_enIniciar;
     Button btnIniciarSesion_enIniciar;
-    TextView txtContrasenaOlvidada_enIniciar,txtRegistrarse_enIniciar;
+    TextView txtContrasenaOlvidada_enIniciar,txtRegistrarse_enIniciar,txtInvitado;
 
     private EditText edtEmail_iniciar_sesion, edtPassword_iniciar_sesion;
 
@@ -43,9 +43,19 @@ public class iniciarSesion extends AppCompatActivity {
         btnIniciarSesion_enIniciar = findViewById(R.id.btnIniciarSesion_enIniciar);
         edtEmail_iniciar_sesion = findViewById(R.id.edtEmail_enIniciar);
         edtPassword_iniciar_sesion = findViewById(R.id.edtPassword_enIniciar);
+        txtInvitado = findViewById(R.id.txtInvitado);
+
 
         //Inicializar la variable ruta de firebase
         mAuth = FirebaseAuth.getInstance();
+
+        txtInvitado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent  = new Intent(iniciarSesion.this,modoInvitado.class);
+                startActivity(intent);
+            }
+        });
 
         btnIniciarSesion_enIniciar.setOnClickListener(new View.OnClickListener() {
             @Override

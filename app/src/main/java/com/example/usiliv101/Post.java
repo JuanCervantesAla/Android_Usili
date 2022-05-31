@@ -43,7 +43,7 @@ import com.denzcoskun.imageslider.constants.ScaleTypes;
 public class Post extends AppCompatActivity {
 
     Button btnVolver_Post,btnParar_Post;
-    TextView txtTitulo_Post,txtEscondido_Post,txtPasos_Post,txtMateriales_Post,txtMensaje4_Post;
+    TextView txtTitulo_Post,txtEscondido_Post,txtPasos_Post,txtMateriales_Post,txtMensaje4_Post,txtAutor_Post;
     ImageView imgV_Post;
     ImageSlider imageSlider;
     VideoView video_Post;
@@ -82,12 +82,14 @@ public class Post extends AppCompatActivity {
         imageSlider = findViewById(R.id.slider);
         video_Post = findViewById(R.id.video_Post);
         txtMensaje4_Post = findViewById(R.id.txtMensaje4_Post);
+        txtAutor_Post = findViewById(R.id.txtAutor_Post);
 
         String referencia = childREFERENCE.toString().trim();
         txtEscondido_Post.setText(referencia);
         txtTitulo_Post.setText(TITULO);
         txtMateriales_Post.setText(MATERIALES);
         txtPasos_Post.setText(PASOS);
+        txtAutor_Post.setText(AUTOR);
 
         //Evento para el boton regresar a front
         btnVolver_Post.setOnClickListener(new View.OnClickListener() {
@@ -111,6 +113,7 @@ public class Post extends AppCompatActivity {
         slideModels.add(new SlideModel(ENLACE2.toString(),ScaleTypes.FIT));
         slideModels.add(new SlideModel(ENLACE3.toString(),ScaleTypes.FIT));
         imageSlider.setImageList(slideModels);
+        imageSlider.requestFocus();
         video_Post.setVideoURI(Uri.parse(ENLACEVideo.toString()));
         MediaController mediaController = new MediaController(this);
         video_Post.setMediaController(mediaController);

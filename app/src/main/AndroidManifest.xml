@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UsiliV101">
         <activity
+            android:name=".modoInvitado"
+            android:exported="false" />
+        <activity
             android:name=".postPdfComentario"
             android:exported="false" />
         <activity

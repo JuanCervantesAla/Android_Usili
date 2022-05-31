@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/UsiliV101/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.22546296296296298" />
         <entry key="..\:/UsiliV101/app/src/main/res/drawable/backbuttoncolor.xml" value="0.3578125" />
+        <entry key="..\:/UsiliV101/app/src/main/res/drawable/border.xml" value="0.27863247863247864" />
         <entry key="..\:/UsiliV101/app/src/main/res/drawable/botoneslargos.xml" value="0.3578125" />
         <entry key="..\:/UsiliV101/app/src/main/res/drawable/buttoncolor.xml" value="0.3578125" />
         <entry key="..\:/UsiliV101/app/src/main/res/drawable/frontlayout.xml" value="0.3578125" />
@@ -16,6 +17,7 @@
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_front.xml" value="0.25" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_iniciar_sesion.xml" value="0.25" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_modo_invitado.xml" value="0.23803418803418802" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_perfil.xml" value="0.25" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_post.xml" value="0.22" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_post_pdf_comentario.xml" value="0.19316239316239317" />
@@ -25,6 +27,8 @@
         <entry key="..\:/UsiliV101/app/src/main/res/layout/item_slider.xml" value="0.30085470085470084" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/login.xml" value="0.25" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/mostrararticulo.xml" value="0.30085470085470084" />
+        <entry key="..\:/UsiliV101/app/src/main/res/menu/menubusqueda.xml" value="0.30085470085470084" />
+        <entry key="..\:/UsiliV101/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.24572649572649571" />
       </map>
     </option>
   </component>

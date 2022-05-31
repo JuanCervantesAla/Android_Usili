@@ -3,6 +3,7 @@ package com.example.usiliv101;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
@@ -15,8 +16,10 @@ import android.renderscript.ScriptGroup;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,6 +61,8 @@ public class perfil extends AppCompatActivity {
     //String para guardar fecha y hora en la que se guardo una foto de perfil
     String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 
+    private Switch switch1;
+
     //Atibutos de la base de datos
     private FirebaseUser usuario;//Autenticación del usuario, obtengo al usuario en sesion
     private DatabaseReference reference;//Ruta para la tabla Usuarios
@@ -72,6 +77,12 @@ public class perfil extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
+            setTheme(R.style.DarkTheme);
+        }
+        else{
+            setTheme(R.style.AppTheme);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
 
@@ -82,6 +93,7 @@ public class perfil extends AppCompatActivity {
         imgVFoto_Perfil = findViewById(R.id.imgVFoto_Perfil);
         final TextView txtCorreo_enPerfil = findViewById(R.id.txtEmailRecipiente_Perfil);
         final TextView txtEdad_enPerfil = findViewById(R.id.txtPasswordRecipiente_Perfil);
+        switch1 = findViewById(R.id.switch1);
 
         //Inicialización de variables de firebase
         usuario = FirebaseAuth.getInstance().getCurrentUser();//Obtengo al usuario actual
@@ -90,6 +102,23 @@ public class perfil extends AppCompatActivity {
         reference2= FirebaseDatabase.getInstance().getReference("Perfiles");//Tomo la referencia de mi base de datos root para subir fecha y url en tabla perfiles
         String pId = reference2.push().getKey();//Obtengo la llave de referencia generada cuando se hace un push en Perfiles
         reference3 = FirebaseStorage.getInstance().getReference("images/").child(idUsuario).child("profile.jpeg");//Referencia a la imagen de perfil del usuario
+
+        if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO){
+            switch1.setChecked(true);
+        }
+/*
+        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    reset();
+                }else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    reset();
+                }
+            }
+        });*/
 
         //Regresa a la activity Home
         btnVolver_Perfil.setOnClickListener(new View.OnClickListener() {
@@ -199,7 +228,13 @@ public class perfil extends AppCompatActivity {
         storageReference = storage.getReference();
     }//Fin del metodo OnCreate
 
-//********************************METODOS FUERA DEL ONCREATE************************************
+    private void reset() {
+        Intent intent = new Intent(getApplicationContext(),perfil.class);
+        startActivity(intent);
+        finish();
+    }
+
+    //********************************METODOS FUERA DEL ONCREATE************************************
     //Metodo para escoger la foto
     private void escogerFoto() {
         //Creo la intencion
