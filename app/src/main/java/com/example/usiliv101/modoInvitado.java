@@ -67,13 +67,6 @@ public class modoInvitado extends AppCompatActivity implements Interfaz {
 
         //INICIO DE RECUPERAR EL CORREO DE LA BASE DE DATOS
 
-        //Obtengo al usuario actual
-        usuario = FirebaseAuth.getInstance().getCurrentUser();
-        //Tomo la referencia de mi base de datos root
-        reference= FirebaseDatabase.getInstance().getReference("Usuarios");
-        //Tomo el id proveniente de usuario
-        idUsuario = usuario.getUid();
-        reference3 = FirebaseStorage.getInstance().getReference("images/").child(idUsuario).child("profile.jpeg");//Referencia a la imagen de perfil del usuario
 
         btnRegistrar_Invitado.setOnClickListener(new View.OnClickListener() {
             @Override

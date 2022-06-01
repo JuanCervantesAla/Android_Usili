@@ -8,7 +8,10 @@ import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,7 +26,10 @@ public class registro extends AppCompatActivity  {
     private FirebaseAuth mAuth;
 
     EditText edtEmail_Registro,edtPassword_Registro,edtPasswordConfirmar_Registro,edtEdad_Registro;
-    Button btnRegistrar_Registro,btnVolver_Registro;
+    Button btnRegistrar_Registro;
+    ImageView btnVolver_Registro;
+    CheckBox ocBTerminos_Registro;
+    TextView txtTerminos_Registro;
 
 
     @Override
@@ -38,6 +44,8 @@ public class registro extends AppCompatActivity  {
         edtEdad_Registro = findViewById(R.id.edtEdad_Registro);
         edtPassword_Registro = findViewById(R.id.edtPassword_Registro);
         edtPasswordConfirmar_Registro = findViewById(R.id.edtPasswordConfirmar_Registro);
+        ocBTerminos_Registro = findViewById(R.id.ocBTerminos_Registro);
+        txtTerminos_Registro = findViewById(R.id.txtTerminos_Registro);
 
         //final EditText Edt_Email_registro = findViewById(R.id.edtEmail_registro);
         //final EditText Edt_Password_registro = findViewById(R.id.edtPassword_registro);
@@ -52,6 +60,14 @@ public class registro extends AppCompatActivity  {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(registro.this,iniciarSesion.class);
+                startActivity(intent);
+            }
+        });
+
+        txtTerminos_Registro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(registro.this,terminosCondiciones.class);
                 startActivity(intent);
             }
         });
@@ -83,6 +99,7 @@ public class registro extends AppCompatActivity  {
             }
         });
     }
+
 
 
     //Metodo para el boton registrarse, validacion
@@ -138,6 +155,9 @@ public class registro extends AppCompatActivity  {
             edtPassword_Registro.setError("¡Las contrasenas no coinciden!");
             edtPassword_Registro.requestFocus();
             return;
+        }
+        if(!ocBTerminos_Registro.isChecked()){
+            Toast.makeText(registro.this, "Acepta los terminos y condiciones", Toast.LENGTH_SHORT).show();
         }
 
         //Crea al usuario en base a una contraseña y un correo

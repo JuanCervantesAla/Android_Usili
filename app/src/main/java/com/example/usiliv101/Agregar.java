@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,10 +43,11 @@ import java.util.UUID;
 public class Agregar extends AppCompatActivity {
 
     //Atributos en Java
-    Button btnVolver_Agregar,btnContinuar_Agregar,btnBuscar_Agregar;
+    Button btnContinuar_Agregar,btnBuscar_Agregar;
     EditText edtETitulo_Agregar,edtEMateriales_Agregar,edtEPasos_Agregar,edtPdf_Agregar;
     TextView txtEscondido_Agregar,txtEscondido2_Agregar,txtEscondido3_Agregar,txtEscondido4_Agregar;
-    ImageView imgVImagen_Agregar,imgVImagen2_Agregar,imgVImagen3_Agregar;
+    ImageView imgVImagen_Agregar,imgVImagen2_Agregar,imgVImagen3_Agregar,btnVolver_Agregar;
+    ScrollView scrollViewA;
     Switch sw_Agregar;
     VideoView vV_Video;
     public Uri imagenUri;
@@ -97,6 +99,8 @@ public class Agregar extends AppCompatActivity {
         txtEscondido3_Agregar = findViewById(R.id.txtEscondido3_Agregar);
         txtEscondido4_Agregar = findViewById(R.id.txtEscondido4_Agregar);
         imgVImagen3_Agregar = findViewById(R.id.imgVImagen3_Agregar);
+        scrollViewA = findViewById(R.id.scrollViewA);
+        scrollViewA.smoothScrollTo(0,0);
 
 
         sw_Agregar.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

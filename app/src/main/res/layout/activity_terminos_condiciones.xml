@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".terminosCondiciones">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="52dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/back" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TERMINOS Y CONDICIONES"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="359dp"
+        android:layout_height="741dp"
+        android:layout_marginTop="8dp"
+        android:text="Terminos y condiciones USILI app.\n
+Este contrato estipula que al registrarse\n
+o hacer uso de la aplicación(Usili app.) y sitio web(UsiliWEB)\n
+tanto derivados desarrollados por los creadores,\n
+aceptas los siguientes acuerdos enunciados.\n
+Este contrato esta sujeto a las leyes digitales\n
+de la constitución de los Estados Unidos Mexicanos.\
+\n \n
+Enunciados:\n
+\n
+1°USILI y asociados, no se hacen responsables
+de de daños causados por el uso malintencionado
+de los articulos, imagenes, videos, material extra(Pdf)
+ni texto contenido en el mismo, ya que aquellos que no vengan registrados
+como parte de USILI no son creados por los mismos.
+\n\n
+2° El material compartido en los articulos sin
+marca de registro de USILI debe ser material didactico y escolar
+no se permite ningun otro material que incluya:
+*Pornografía de cualquier tipo
+*Material Sangriento
+*Campañas politicas o religiosas
+*No afines al tema escolar
+
+\n\n
+3°Al registrarse en la aplicación:
+-Al ser mayor de edad: No puedes demandar a USILI
+en ningun sentido, el uso de la aplicación y la información
+obtenida es por tu propia cuenta, no nos hacemos responsables
+de daños que estos puedan ocasionar de cualquier tipo.
+-Al ser menor de edad: Aceptas que tus padres estan
+de acuerdo al utilizar la aplicación y que al ser mayores de edad
+deben cumplir con la norma Al ser mayor de edad.
+\n\n
+4°Esta prohibida la distribución ilegal o modificación al
+software, inmediatamente se tomaran acciones en contra del
+perpetrador
+
+\n\n
+5°El Software es propiedad de:
+Cervantes Alatorre Juan José Emiliano (Nacionalidad Mexicana)
+Sánchez Valencia Leonardo Yael(Nacionalidad Mexicana)
+
+
+\n\n
+6°Toda la información recabada del usuario es mantenida
+en total confidencialidad.
+\n\n
+@Proyecto hecho con el fin de Proyecto de Titulación
+de la escuela CENTRO DE ENSEÑANZA TECNICA INDUSTRIAL
+
+
+
+
+"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+</androidx.constraintlayout.widget.ConstraintLayout>

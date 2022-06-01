@@ -10,9 +10,10 @@
         <entry key="..\:/UsiliV101/app/src/main/res/drawable/buttoncolor.xml" value="0.3578125" />
         <entry key="..\:/UsiliV101/app/src/main/res/drawable/frontlayout.xml" value="0.3578125" />
         <entry key="..\:/UsiliV101/app/src/main/res/drawable/ic_launcher_background.xml" value="0.25677083333333334" />
+        <entry key="..\:/UsiliV101/app/src/main/res/drawable/imageborder.xml" value="0.26153846153846155" />
         <entry key="..\:/UsiliV101/app/src/main/res/drawable/layoutborder.xml" value="0.2188034188034188" />
         <entry key="..\:/UsiliV101/app/src/main/res/drawable/littlebackground.xml" value="0.3578125" />
-        <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_agregar.xml" value="0.22" />
+        <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_agregar.xml" value="0.25" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_agregar2.xml" value="0.30085470085470084" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_contrasena_nueva.xml" value="0.33559782608695654" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_front.xml" value="0.25" />
@@ -24,6 +25,7 @@
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_post_pdf_comentario.xml" value="0.19316239316239317" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_post_video.xml" value="0.2047008547008547" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_registro.xml" value="0.33" />
+        <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_terminos_condiciones.xml" value="0.30085470085470084" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/item.xml" value="0.25" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/item_slider.xml" value="0.30085470085470084" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/login.xml" value="0.25" />

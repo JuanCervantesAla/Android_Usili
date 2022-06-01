@@ -56,8 +56,8 @@ public class perfil extends AppCompatActivity {
     //Atributos de Java
     ImageView imgVFoto_Perfil,imgVFoto_Front;
     public TextView txtCorreo_enPerfil,txtEdad_enPerfil;
-
-    Button btnCerrarsesion_perfil, btnCambiarontrasena_perfil,btnVolver_Perfil;
+    ImageView btnVolver_Perfil;
+    Button btnCerrarsesion_perfil, btnCambiarontrasena_perfil;
     //String para guardar fecha y hora en la que se guardo una foto de perfil
     String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 
@@ -93,7 +93,6 @@ public class perfil extends AppCompatActivity {
         imgVFoto_Perfil = findViewById(R.id.imgVFoto_Perfil);
         final TextView txtCorreo_enPerfil = findViewById(R.id.txtEmailRecipiente_Perfil);
         final TextView txtEdad_enPerfil = findViewById(R.id.txtPasswordRecipiente_Perfil);
-        switch1 = findViewById(R.id.switch1);
 
         //Inicialización de variables de firebase
         usuario = FirebaseAuth.getInstance().getCurrentUser();//Obtengo al usuario actual

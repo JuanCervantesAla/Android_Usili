@@ -10,11 +10,11 @@
 
     <ImageView
         android:id="@+id/imgVFoto_Perfil"
-        android:layout_width="216dp"
-        android:layout_height="205dp"
+        android:layout_width="271dp"
+        android:layout_height="255dp"
         android:layout_marginTop="72dp"
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_gallery" />
@@ -49,10 +49,10 @@
         android:id="@+id/txtEmail_Perfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:text="Correo electronico/Email"
-        android:textSize="20dp"
         android:textColor="@color/black"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.122"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:textSize="20dp"
+        android:textSize="26dp"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.053"
@@ -88,7 +88,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:textSize="20dp"
+        android:textSize="26dp"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.053"
@@ -113,11 +113,12 @@
         android:id="@+id/btnCerrarSesion_Perfil"
         android:layout_width="187dp"
         android:layout_height="46dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/buttoncolor"
         android:text="Cerrar Sesion"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.563"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtGuardados_Perfil" />
 
@@ -125,35 +126,24 @@
         android:id="@+id/btnCambiarContrasena_Perfil"
         android:layout_width="192dp"
         android:layout_height="55dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/buttoncolor"
         android:text="Cambiar contrasena"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintHorizontal_bias="0.611"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnCerrarSesion_Perfil" />
 
-    <Button
+    <ImageView
         android:id="@+id/btnVolver_Perfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginBottom="44dp"
-        android:background="@drawable/buttoncolor"
-        android:text="Volver"
-        android:textColor="@color/white"
+        android:layout_width="56dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/back" />
 
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="ON/OFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.736"
-        app:layout_constraintStart_toEndOf="@+id/txtLogo_Perfil"
-        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

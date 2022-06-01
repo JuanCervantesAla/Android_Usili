@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.MediaController;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.VideoView;
 import android.widget.ViewFlipper;
@@ -49,6 +50,7 @@ public class Post extends AppCompatActivity {
     ImageView imgV_Post,img1_Post,img2_Post,img3_Post,imgBack_Post,imgFoto_Post,txtMensaje4_Post;
     ImageSlider imageSlider;
     VideoView video_Post;
+    ScrollView scrollView;
     private FirebaseUser usuario;
     private String idUsuario;
     private StorageReference reference3;
@@ -63,9 +65,6 @@ public class Post extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
-        usuario = FirebaseAuth.getInstance().getCurrentUser();
-        idUsuario = usuario.getUid();
-        reference3 = FirebaseStorage.getInstance().getReference("images/").child(idUsuario).child("profile.jpeg");//Referencia a la imagen de perfil del usuario
 
         String ID = getIntent().getStringExtra("Identificador");
         String AUTOR = getIntent().getStringExtra("Autor");
@@ -92,7 +91,8 @@ public class Post extends AppCompatActivity {
         img1_Post = findViewById(R.id.img1_Post);
         img2_Post = findViewById(R.id.img2_Post);
         img3_Post = findViewById(R.id.img3_Post);
-        imgFoto_Post = findViewById(R.id.imgFoto_Post);
+        scrollView = findViewById(R.id.scrollView);
+        scrollView.smoothScrollTo(0,0);
 
         String referencia = childREFERENCE.toString().trim();
         txtEscondido_Post.setText(referencia);
@@ -135,54 +135,10 @@ public class Post extends AppCompatActivity {
         slideModels.add(new SlideModel(ENLACE2.toString(),ScaleTypes.FIT));
         slideModels.add(new SlideModel(ENLACE3.toString(),ScaleTypes.FIT));
         imageSlider.setImageList(slideModels);
-        txtTitulo_Post.requestFocus();
         video_Post.setVideoURI(Uri.parse(ENLACEVideo.toString()));
         MediaController mediaController = new MediaController(this);
         video_Post.setMediaController(mediaController);
         mediaController.setAnchorView(video_Post);
-
-        try {//Intenta
-            final File localFile= File.createTempFile("profile","jpeg");//Crea un archivo temporal con este nombre,profile jpeg
-            reference3.getFile(localFile)//trae el archivo de la referencia y almacenalo en el objeto temporal localFile
-                    .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {//Si el proceso fue exitoso
-                        @Override
-                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                            //Toast.makeText(front_activity.this, "Imagen cargada", Toast.LENGTH_SHORT).show();//Manda un mensaje de imagen cargada
-                            /*
-                            Como no puedo mostrar una imagen a su resolución total
-                            Hago una bitmap(una rescala) de la imagen
-                            Acortando el uso de la memoria que tiene
-                            Ajustandolo a la pantalla
-                            y que solo muestra una fracción de la imagen
-                            algo asi como cuando se muestran las imagenes en galeria
-                            No se muestran a toda resolucion, solo una parte de ellas como unos pequeños iconos
-                             */
-                            Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());/*
-                                                                                                    Creo un bitmap para tomar solo una parte de los bits
-                                                                                                    Despues obtengo la ruta donde se guardo el archivo temporal
-                                                                                                    de tipo File que utilicé
-                                                                                                   */
-
-                            imgFoto_Post.setImageBitmap(bitmap);
-
-                            /*
-                             Indico que al imageView le agregue la imagen reescalada que apunta al fichero
-                             creado en memoria temporal que obtiene la ruta de mi base de datos
-                             */
-
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {//Si el proceso falla
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    //Toast.makeText(perfil.this, "Error el cargar imagen", Toast.LENGTH_SHORT).show();//Muestra mensaje de error
-                }
-            });
-        } catch (IOException e) { //Si de plano todo falla imprimer el error con la expcetion In Out
-            e.printStackTrace();
-        }
-
-
-
 
     }
 
