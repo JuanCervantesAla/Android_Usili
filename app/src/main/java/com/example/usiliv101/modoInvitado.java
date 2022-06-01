@@ -111,6 +111,17 @@ public class modoInvitado extends AppCompatActivity implements Interfaz {
 
     @Override
     public void clickEnItem(int posicion) {
-
+        Intent intent = new Intent(modoInvitado.this,Post.class);
+        intent.putExtra("Identificador",list.get(posicion).getId());
+        intent.putExtra("Titulo",list.get(posicion).getTitulo());
+        intent.putExtra("Autor",list.get(posicion).getAutor());
+        intent.putExtra("Pasos",list.get(posicion).getPasos());
+        intent.putExtra("Materiales",list.get(posicion).getMateriales());
+        intent.putExtra("Enlace",list.get(posicion).getEnlace());
+        intent.putExtra("Enlace2",list.get(posicion).getEnlace2());
+        intent.putExtra("Enlace3",list.get(posicion).getEnlace3());
+        intent.putExtra("EnlaceV",list.get(posicion).getVideo());
+        intent.putExtra("EnlaceP",list.get(posicion).getPdf());
+        startActivity(intent);
     }
 }

@@ -559,6 +559,13 @@ public class Agregar extends AppCompatActivity {
             edtEPasos_Agregar.requestFocus();
             return;
         }
+        /*
+        if(Uri.EMPTY.equals(pdfUri)){
+            Uri nuevoPdfUri = Uri.parse("https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-line-icon-vectors-png-image_1737850.jpg");
+            subirFoto(imagenUri, nuevoId,imagenUri2,imagenUri3,nuevoPdfUri,videoUri);
+        }else{
+            subirFoto(imagenUri, nuevoId,imagenUri2,imagenUri3,pdfUri,videoUri);
+        }*/
         subirFoto(imagenUri, nuevoId,imagenUri2,imagenUri3,pdfUri,videoUri);
         //subirPdf(pdfUri);
 
