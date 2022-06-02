@@ -41,6 +41,7 @@ public class modoInvitado extends AppCompatActivity implements Interfaz {
 
 
     //Variables de firebase
+    ImageView btnVolver_Invitado;
     RecyclerView recyclerView;
     AdaptadorRV adaptadorRV;
     ArrayList<Articulos> list;
@@ -63,6 +64,7 @@ public class modoInvitado extends AppCompatActivity implements Interfaz {
 
         btnRegistrar_Invitado = findViewById(R.id.btnRegistrar_Invitado);
         recyclerView = findViewById(R.id.rvArticulos_Front);
+        btnVolver_Invitado = findViewById(R.id.btnVolver_Invitado);
         //rvPrincipal1 = findViewById(R.id.rvPrincipal1);
 
         //INICIO DE RECUPERAR EL CORREO DE LA BASE DE DATOS
@@ -72,6 +74,14 @@ public class modoInvitado extends AppCompatActivity implements Interfaz {
             @Override
             public void onClick(View view) {
                 Intent intent  = new Intent(modoInvitado.this,registro.class);
+                startActivity(intent);
+            }
+        });
+
+        btnVolver_Invitado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent  = new Intent(modoInvitado.this,iniciarSesion.class);
                 startActivity(intent);
             }
         });

@@ -4,19 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo"
     tools:context=".contrasenaNueva">
 
     <TextView
         android:id="@+id/txtLogo_Perfil"
-        android:layout_width="170dp"
-        android:layout_height="77dp"
+        android:layout_width="110dp"
+        android:layout_height="55dp"
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-black"
         android:text="USILI"
         android:textColor="#77DD77"
         android:textSize="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.094"
+        app:layout_constraintHorizontal_bias="0.978"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="104dp"
         android:fontFamily="sans-serif-thin"
-        android:text="Contrasena Olvidada"
+        android:text="Password Olvidada"
         android:textColor="@color/design_default_color_error"
         android:textSize="40dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -64,7 +65,7 @@
         android:layout_height="56dp"
         android:layout_marginTop="56dp"
         android:background="@drawable/buttoncolor"
-        android:text="Cambiar contrasena"
+        android:text="Cambiar password"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"

@@ -2,8 +2,11 @@ package com.example.usiliv101;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -37,6 +40,9 @@ public class iniciarSesion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iniciar_sesion);
 
+        //Fondo animado
+
+
         //Relacion de las View xml y variables Java
         txtContrasenaOlvidada_enIniciar = findViewById(R.id.txtContrasenaOlvidada_enIniciar);
         txtRegistrarse_enIniciar = findViewById(R.id.txtRegistrarse_enIniciar);
@@ -48,6 +54,12 @@ public class iniciarSesion extends AppCompatActivity {
 
         //Inicializar la variable ruta de firebase
         mAuth = FirebaseAuth.getInstance();
+
+        /*
+        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(2500);
+        animationDrawable.setExitFadeDuration(5000);
+        animationDrawable.start();*/
 
         txtInvitado.setOnClickListener(new View.OnClickListener() {
             @Override

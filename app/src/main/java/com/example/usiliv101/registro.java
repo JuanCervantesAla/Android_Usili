@@ -3,19 +3,24 @@ package com.example.usiliv101;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.window.SplashScreen;
+import android.window.SplashScreenView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
@@ -30,6 +35,8 @@ public class registro extends AppCompatActivity  {
     ImageView btnVolver_Registro;
     CheckBox ocBTerminos_Registro;
     TextView txtTerminos_Registro;
+    String email,password2,passwordConfirmar2,edad2;
+    private MaterialAlertDialogBuilder materialAlertDialogBuilder;
 
 
     @Override
@@ -47,13 +54,9 @@ public class registro extends AppCompatActivity  {
         ocBTerminos_Registro = findViewById(R.id.ocBTerminos_Registro);
         txtTerminos_Registro = findViewById(R.id.txtTerminos_Registro);
 
-        //final EditText Edt_Email_registro = findViewById(R.id.edtEmail_registro);
-        //final EditText Edt_Password_registro = findViewById(R.id.edtPassword_registro);
-        //btnRegistrarse_registro = findViewById(R.id.btnRegistrarse_registro);
-        //usuarioDataB usuarioDataB = new usuarioDataB();
 
-
-
+        btnRegistrar_Registro.setEnabled(false);
+        materialAlertDialogBuilder = new MaterialAlertDialogBuilder(registro.this);
 
         //LLamada al boton Volver (Registro a Login)
         btnVolver_Registro.setOnClickListener(new View.OnClickListener() {
@@ -64,33 +67,10 @@ public class registro extends AppCompatActivity  {
             }
         });
 
-        txtTerminos_Registro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(registro.this,terminosCondiciones.class);
-                startActivity(intent);
-            }
-        });
+
 
         //Inicializar la variable autenticadora
         mAuth = FirebaseAuth.getInstance();
-
-        /*
-        //Inicio de Firebase
-        //Boton registrarse para conexión a Base de datos
-        btnRegistrarse_registro.setOnClickListener(v ->
-        {
-            usuario usu = new usuario(Edt_Email_registro.getText().toString(),Edt_Password_registro.getText().toString());
-            usuarioDataB.add(usu).addOnSuccessListener(suc ->
-                    {
-                        Toast.makeText(this, "Usuario exitosamente registrado", Toast.LENGTH_SHORT).show();
-                    }).addOnFailureListener(er ->
-            {
-                Toast.makeText(this, ""+er.getMessage(), Toast.LENGTH_SHORT).show();
-            });
-        });
-
-         */
 
         btnRegistrar_Registro.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +78,83 @@ public class registro extends AppCompatActivity  {
                 registrarseRegistro();
             }
         });
+
+        ocBTerminos_Registro.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    materialAlertDialogBuilder.setTitle("Terminos y condiciones");
+                    materialAlertDialogBuilder.setMessage("Terminos y condiciones USILI app.\n" +
+                            "Este contrato estipula que al registrarse" +
+                            "o hacer uso de la aplicación(Usili app.) y sitio web(UsiliWEB)" +
+                            "tanto derivados desarrollados por los creadores," +
+                            "aceptas los siguientes acuerdos enunciados." +
+                            "Este contrato esta sujeto a las leyes digitales" +
+                            "de la constitución de los Estados Unidos Mexicanos." +
+                            "" +
+                            "Enunciados:\n" +
+
+                            "1°USILI y asociados, no se hacen responsables\n" +
+                            "de de daños causados por el uso malintencionado\n" +
+                            "de los articulos, imagenes, videos, material extra(Pdf)\n" +
+                            "ni texto contenido en el mismo, ya que aquellos que no vengan registrados\n" +
+                            "como parte de USILI no son creados por los mismos.\n" +
+                            "\n" +
+                            "2° El material compartido en los articulos sin\n" +
+                            "marca de registro de USILI debe ser material didactico y escolar\n" +
+                            "no se permite ningun otro material que incluya:\n" +
+                            "*Pornografía de cualquier tipo\n" +
+                            "*Material Sangriento\n" +
+                            "*Campañas politicas o religiosas\n" +
+                            "*No afines al tema escolar\n" +
+                            "\n" +
+                            "\n" +
+                            "3°Al registrarse en la aplicación:\n" +
+                            "-Al ser mayor de edad: No puedes demandar a USILI\n" +
+                            "en ningun sentido, el uso de la aplicación y la información\n" +
+                            "obtenida es por tu propia cuenta, no nos hacemos responsables\n" +
+                            "de daños que estos puedan ocasionar de cualquier tipo.\n" +
+                            "-Al ser menor de edad: Aceptas que tus padres estan\n" +
+                            "de acuerdo al utilizar la aplicación y que al ser mayores de edad\n" +
+                            "deben cumplir con la norma Al ser mayor de edad.\n" +
+                            "\n" +
+                            "4°Esta prohibida la distribución ilegal o modificación al\n" +
+                            "software, inmediatamente se tomaran acciones en contra del\n" +
+                            "perpetrador\n" +
+                            "\n" +
+                            "\n" +
+                            "5°El Software es propiedad de:\n" +
+                            "Cervantes Alatorre Juan José Emiliano (Nacionalidad Mexicana)\n" +
+                            "Sánchez Valencia Leonardo Yael(Nacionalidad Mexicana)\n" +
+                            "\n" +
+                            "\n" +
+                            "\n" +
+                            "6°Toda la información recabada del usuario es mantenida\n" +
+                            "en total confidencialidad.\n" +
+                            "\n" +
+                            "@Proyecto hecho con el fin de Proyecto de Titulación\n" +
+                            "de la escuela CENTRO DE ENSEÑANZA TECNICA INDUSTRIAL");
+                    materialAlertDialogBuilder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            btnRegistrar_Registro.setEnabled(true);
+                            dialogInterface.dismiss();
+                        }
+                    });
+                    materialAlertDialogBuilder.setNegativeButton("Decline", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                            ocBTerminos_Registro.setChecked(false);
+                        }
+                    });
+                    materialAlertDialogBuilder.show();
+                }else{
+                    btnRegistrar_Registro.setEnabled(false);
+                }
+            }
+        });
+
     }
 
 
@@ -200,5 +257,31 @@ public class registro extends AppCompatActivity  {
                     }
                 });
     }
+/*
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        email = String.valueOf(edtEmail_Registro);
+        password2 = String.valueOf(edtPassword_Registro);
+        passwordConfirmar2= String.valueOf(edtPasswordConfirmar_Registro);
+        edad2 = String.valueOf(edtEdad_Registro);
+        outState.putString("email", email);
+        outState.putString("password", password2);
+        outState.putString("passwordconfirmar", passwordConfirmar2);
+        outState.putString("edad",edad2);
+    }
 
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        email = savedInstanceState.getString("email");
+        password2 = savedInstanceState.getString("password");
+        passwordConfirmar2 = savedInstanceState.getString("passwordconfirmar");
+        edad2 = savedInstanceState.getString("edad");
+
+        edtEmail_Registro.setText(email);
+        edtPassword_Registro.setText(password2);
+        edtPasswordConfirmar_Registro.setText(passwordConfirmar2);
+        edtEdad_Registro.setText(edad2);
+    }*/
 }

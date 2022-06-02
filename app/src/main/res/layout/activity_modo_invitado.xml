@@ -8,15 +8,15 @@
 
     <TextView
         android:id="@+id/txtLogo_Front"
-        android:layout_width="170dp"
-        android:layout_height="77dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="146dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-black"
         android:text="USILI"
         android:textColor="#77DD77"
-        android:textSize="49dp"
+        android:textSize="55dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.569"
+        app:layout_constraintHorizontal_bias="0.937"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,7 +24,7 @@
         android:id="@+id/txtTitulo_Front"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-condensed-medium"
         android:text="¡ B i e n v e n i d o !"
         android:textColor="#26abff"
@@ -65,31 +65,28 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/txtNegocio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="¿Qué te pareció?,¿Te Nos unes?"
-        android:fontFamily="sans-serif-black"
-        android:textColor="#77DD77"
+    <Button
+        android:id="@+id/btnRegistrar_Invitado"
+        android:layout_width="147dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/buttoncolor"
+        android:text="Registrarme"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtSlogan_Front" />
 
-    <Button
-        android:id="@+id/btnRegistrar_Invitado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="¡Estoy dentro!"
-        android:background="@drawable/buttoncolor"
-        android:textColor="@color/white"
+    <ImageView
+        android:id="@+id/btnVolver_Invitado"
+        android:layout_width="80dp"
+        android:layout_height="92dp"
+        android:layout_marginBottom="128dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNegocio" />
+        app:srcCompat="@drawable/back" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
