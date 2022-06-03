@@ -529,9 +529,9 @@ public class Agregar extends AppCompatActivity {
     }
 
     private void subirDatos() {
-        String titulo = "Titulo: "+edtETitulo_Agregar.getText().toString().trim();
-        String materiales = "Materiales: "+edtEMateriales_Agregar.getText().toString().trim();
-        String pasos = "Pasos: "+edtEPasos_Agregar.getText().toString().trim();
+        String titulo = edtETitulo_Agregar.getText().toString().trim();
+        String materiales = edtEMateriales_Agregar.getText().toString().trim();
+        String pasos = edtEPasos_Agregar.getText().toString().trim();
         String enlace = " ";
         String pId = reference2.push().getKey();
         //final String randomkey  = UUID.randomUUID().toString();//Creo una llave random para almacenar las imagenes en una carpeta
@@ -542,24 +542,24 @@ public class Agregar extends AppCompatActivity {
 
 
         if (titulo.isEmpty()) {
-            edtETitulo_Agregar.setError("¡Ingresa un titulo por favor!");
+            edtETitulo_Agregar.setError("Ingresa un titulo por favor");
             edtETitulo_Agregar.requestFocus();
             return;
         }
-        if (titulo.length() <= 10) {
-            edtETitulo_Agregar.setError("¡Ingresa un titulo mas largo!");
+        if (titulo.length() <= 10 || titulo.length()>=20) {
+            edtETitulo_Agregar.setError("Ingresa un titulo mas largo");
             edtETitulo_Agregar.requestFocus();
             return;
         }
 
         if (materiales.isEmpty()) {
-            edtEMateriales_Agregar.setError("¡Ingresa los materiales!");
+            edtEMateriales_Agregar.setError("Ingresa los materiales");
             edtEMateriales_Agregar.requestFocus();
             return;
         }
 
         if (pasos.isEmpty()) {
-            edtEPasos_Agregar.setError("¡Ingresa los pasos a seguir!");
+            edtEPasos_Agregar.setError("Ingresa los pasos a seguir");
             edtEPasos_Agregar.requestFocus();
             return;
         }
