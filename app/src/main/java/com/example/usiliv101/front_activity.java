@@ -51,7 +51,7 @@ public class front_activity extends AppCompatActivity implements Interfaz {
     SearchView searchView;
 
     ImageView iconoperfil,imgVFoto_Front;
-    Button btnAgregar_front,btnMis_front;
+    Button btnAgregar_front,btnMis_front,btnExpertos_front;
     private FirebaseUser usuario;
     private DatabaseReference reference;
     private DatabaseReference referenceRV;
@@ -71,7 +71,16 @@ public class front_activity extends AppCompatActivity implements Interfaz {
         btnAgregar_front = findViewById(R.id.btnAgregar_front);
         recyclerView = findViewById(R.id.rvArticulos_Front);
         searchView = findViewById(R.id.search);
+        btnExpertos_front = findViewById(R.id.btnExpertos_front);
         //rvPrincipal1 = findViewById(R.id.rvPrincipal1);
+
+        btnExpertos_front.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent  = new Intent(front_activity.this,frontExpertos.class);
+                startActivity(intent);
+            }
+        });
 
         btnAgregar_front.setOnClickListener(new View.OnClickListener() {
             @Override

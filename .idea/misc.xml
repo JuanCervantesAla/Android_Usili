@@ -20,18 +20,23 @@
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_agregar.xml" value="0.25" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_agregar2.xml" value="0.30085470085470084" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_contrasena_nueva.xml" value="0.33559782608695654" />
+        <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_correo.xml" value="0.22" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_front.xml" value="0.25" />
+        <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_front_expertos.xml" value="0.30085470085470084" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_iniciar_sesion.xml" value="0.25" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_modo_invitado.xml" value="0.23803418803418802" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_perfil.xml" value="0.25" />
+        <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_perfil_trabajador.xml" value="0.30085470085470084" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_post.xml" value="0.25" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_post_pdf_comentario.xml" value="0.19316239316239317" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_post_video.xml" value="0.2047008547008547" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_registro.xml" value="0.33" />
+        <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_registro_expertos.xml" value="0.30085470085470084" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/activity_terminos_condiciones.xml" value="0.30085470085470084" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/item.xml" value="0.25" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/item_slider.xml" value="0.30085470085470084" />
+        <entry key="..\:/UsiliV101/app/src/main/res/layout/iteme.xml" value="0.30085470085470084" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/login.xml" value="0.25" />
         <entry key="..\:/UsiliV101/app/src/main/res/layout/mostrararticulo.xml" value="0.30085470085470084" />
         <entry key="..\:/UsiliV101/app/src/main/res/menu/menubusqueda.xml" value="0.30085470085470084" />

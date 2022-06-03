@@ -76,7 +76,7 @@ public class Agregar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar);
         //Subida de foto
-        storage =  FirebaseStorage.getInstance();
+        storage =  FirebaseStorage.getInstance();storage =  FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         referenciaPdf= FirebaseDatabase.getInstance().getReference("ApoyoPdf");
         reference2= FirebaseDatabase.getInstance().getReference("Apoyo");//Tomo la referencia de mi base de datos root para subir fecha y url en tabla perfiles

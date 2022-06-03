@@ -58,9 +58,9 @@
 
     <Button
         android:id="@+id/btnAgregar_front"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="288dp"
+        android:layout_width="151dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="224dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/buttoncolor"
         android:text="Agregar"
@@ -68,15 +68,27 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/btnExpertos_front"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/buttoncolor"
+        android:text="Ver los expertos"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvArticulos_Front"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_width="386dp"
+        android:layout_height="248dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search" />
+        app:layout_constraintTop_toBottomOf="@+id/txtSlogan_Front" />
 
     <TextView
         android:id="@+id/txtEscondido_Front"
@@ -92,9 +104,26 @@
         android:id="@+id/search"
         android:layout_width="318dp"
         android:layout_height="45dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/rvArticulos_Front"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.453"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtSlogan_Front" />
+        app:layout_constraintTop_toBottomOf="@+id/txtSlogan_Front"
+        app:layout_constraintVertical_bias="0.135" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:text="¿Se te dificulto\n alguna problematica?"
+        android:textColor="@color/black"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnExpertos_front"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.133"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -257,31 +257,4 @@ public class registro extends AppCompatActivity  {
                     }
                 });
     }
-/*
-    @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        email = String.valueOf(edtEmail_Registro);
-        password2 = String.valueOf(edtPassword_Registro);
-        passwordConfirmar2= String.valueOf(edtPasswordConfirmar_Registro);
-        edad2 = String.valueOf(edtEdad_Registro);
-        outState.putString("email", email);
-        outState.putString("password", password2);
-        outState.putString("passwordconfirmar", passwordConfirmar2);
-        outState.putString("edad",edad2);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        email = savedInstanceState.getString("email");
-        password2 = savedInstanceState.getString("password");
-        passwordConfirmar2 = savedInstanceState.getString("passwordconfirmar");
-        edad2 = savedInstanceState.getString("edad");
-
-        edtEmail_Registro.setText(email);
-        edtPassword_Registro.setText(password2);
-        edtPasswordConfirmar_Registro.setText(passwordConfirmar2);
-        edtEdad_Registro.setText(edad2);
-    }*/
 }
