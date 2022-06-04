@@ -2,12 +2,16 @@ package com.example.usiliv101;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -17,6 +21,7 @@ import android.widget.ScrollView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 import android.widget.VideoView;
 
 import com.bumptech.glide.Glide;
@@ -24,6 +29,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -56,6 +62,10 @@ public class Agregar extends AppCompatActivity {
     public Uri pdfUri;
     public Uri videoUri;
 
+    DrawerLayout drawerLayout;
+    NavigationView menuNavegacion;
+    Toolbar toolbar;
+    ActionBarDrawerToggle actionBarDrawerToggle;
 
     private DatabaseReference reference;//Ruta para la tabla Usuarios
     private String idUsuario;
@@ -100,8 +110,50 @@ public class Agregar extends AppCompatActivity {
         txtEscondido3_Agregar = findViewById(R.id.txtEscondido3_Agregar);
         txtEscondido4_Agregar = findViewById(R.id.txtEscondido4_Agregar);
         imgVImagen3_Agregar = findViewById(R.id.imgVImagen3_Agregar);
+        drawerLayout = findViewById(R.id.drawerLayout);
+        menuNavegacion = findViewById(R.id.menuNavegacion);
         scrollViewA = findViewById(R.id.scrollViewA);
         scrollViewA.smoothScrollTo(0,0);
+
+        //Menu
+        /*
+        actionBarDrawerToggle =new ActionBarDrawerToggle(this,drawerLayout,R.string.menu_Open,R.string.menu_Close);
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        menuNavegacion.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.home_Menu:
+                        Intent intent = new Intent(Agregar.this,front_activity.class);
+                        startActivity(intent);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+                    case R.id.Perfil_Menu:
+                        Intent intent2 = new Intent(Agregar.this,perfil.class);
+                        startActivity(intent2);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+                    case R.id.Agregar_Menu:
+                        Intent intent3 = new Intent(Agregar.this,Agregar.class);
+                        startActivity(intent3);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+                    case R.id.Especialistas_Menu:
+                        Intent intent4 = new Intent(Agregar.this,frontExpertos.class);
+                        startActivity(intent4);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+                }
+                return true;
+            }
+        });
+         */
 
 
         sw_Agregar.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

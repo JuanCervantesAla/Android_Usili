@@ -1,12 +1,12 @@
 package com.example.usiliv101;
 
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
-import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
-import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -19,10 +19,8 @@ import android.graphics.Typeface;
 import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.StrictMode;
 import android.text.TextPaint;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -31,39 +29,26 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
-import android.widget.ViewFlipper;
 
 import com.bumptech.glide.Glide;
 import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.slider.Slider;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FileDownloadTask;
-import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.smarteist.autoimageslider.SliderView;
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import com.denzcoskun.imageslider.constants.ScaleTypes;
 
-public class Post extends AppCompatActivity {
+public class postInvitado extends AppCompatActivity {
 
     Button btnVolver_Post,btnParar_Post;
     TextView txtTitulo_Post,txtEscondido_Post,txtPasos_Post,txtMateriales_Post,txtAutor_Post;
@@ -84,7 +69,8 @@ public class Post extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post);
+        setContentView(R.layout.activity_post_invitado);
+
 
         String ID = getIntent().getStringExtra("Identificador");
         String AUTOR = getIntent().getStringExtra("Autor");
@@ -129,7 +115,7 @@ public class Post extends AppCompatActivity {
         imgBack_Post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Post.this,front_activity.class);
+                Intent intent = new Intent(postInvitado.this,modoInvitado.class);
                 startActivity(intent);
             }
         });
@@ -155,7 +141,7 @@ public class Post extends AppCompatActivity {
 
         List<SlideModel> slideModels = new ArrayList<>();
 
-        slideModels.add(new SlideModel(ENLACE.toString(),ScaleTypes.FIT));
+        slideModels.add(new SlideModel(ENLACE.toString(), ScaleTypes.FIT));
         slideModels.add(new SlideModel(ENLACE2.toString(),ScaleTypes.FIT));
         slideModels.add(new SlideModel(ENLACE3.toString(),ScaleTypes.FIT));
         imageSlider.setImageList(slideModels);
@@ -175,7 +161,7 @@ public class Post extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 generarPdf(TITULO,PASOS,MATERIALES,AUTOR,ID,ENLACE,ENLACE2,ENLACE3);
-                Intent intent = new Intent(Post.this,pdfVista.class);
+                Intent intent = new Intent(postInvitado.this,pdfVista.class);
                 intent.putExtra("Ruta",TITULO);
                 startActivity(intent);
             }
@@ -320,4 +306,5 @@ public class Post extends AppCompatActivity {
             return null;
         }
     }
+
 }

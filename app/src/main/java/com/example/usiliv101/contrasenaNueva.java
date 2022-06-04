@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,7 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class contrasenaNueva extends AppCompatActivity {
 
     Button btncontrasenaNueva;
-    ImageButton btnVolver_contrasenaNueva;
+    ImageView btnVolver_contrasenaNueva;
     EditText edtEmail_contrasenaNueva;
 
     //Variable para la autenticacion de firebase

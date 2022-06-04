@@ -82,6 +82,9 @@
                 android:layout_width="356dp"
                 android:layout_height="43dp"
                 android:layout_marginTop="12dp"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/ic_baseline_short_text_24"
+                android:background="@drawable/edt_background"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text=""
@@ -107,6 +110,9 @@
                 android:layout_width="359dp"
                 android:layout_height="158dp"
                 android:layout_marginTop="4dp"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/ic_baseline_short_text_24"
+                android:background="@drawable/edt_background"
                 android:ems="10"
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
@@ -132,6 +138,9 @@
                 android:layout_width="357dp"
                 android:layout_height="142dp"
                 android:layout_marginTop="8dp"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/ic_baseline_short_text_24"
+                android:background="@drawable/edt_background"
                 android:ems="10"
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
@@ -231,6 +240,9 @@
                 android:layout_height="52dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="88dp"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/ic_baseline_short_text_24"
+                android:background="@drawable/edt_background"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text=""
@@ -304,6 +316,5 @@
                 app:srcCompat="@drawable/back" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </ScrollView>

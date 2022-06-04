@@ -1,7 +1,10 @@
 package com.example.usiliv101;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,9 +20,11 @@ import android.widget.ImageView;
 import androidx.appcompat.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -49,7 +54,10 @@ public class front_activity extends AppCompatActivity implements Interfaz {
     ArrayList<Articulos> list;
 
     SearchView searchView;
-
+    DrawerLayout drawerLayout;
+    NavigationView menuNavegacion;
+    Toolbar toolbar;
+    ActionBarDrawerToggle actionBarDrawerToggle;
     ImageView iconoperfil,imgVFoto_Front;
     Button btnAgregar_front,btnMis_front,btnExpertos_front;
     private FirebaseUser usuario;
@@ -61,6 +69,13 @@ public class front_activity extends AppCompatActivity implements Interfaz {
     //Variables del recycle
     RecyclerView rvPrincipal1;
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+        if(actionBarDrawerToggle.onOptionsItemSelected(item)){
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +86,56 @@ public class front_activity extends AppCompatActivity implements Interfaz {
         btnAgregar_front = findViewById(R.id.btnAgregar_front);
         recyclerView = findViewById(R.id.rvArticulos_Front);
         searchView = findViewById(R.id.search);
+
         btnExpertos_front = findViewById(R.id.btnExpertos_front);
+        drawerLayout = findViewById(R.id.drawerLayout);
+        menuNavegacion = findViewById(R.id.menuNavegacion);
+
+        //Menu
+        actionBarDrawerToggle =new ActionBarDrawerToggle(this,drawerLayout,R.string.menu_Open,R.string.menu_Close);
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        menuNavegacion.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.home_Menu:
+                        Intent intent = new Intent(front_activity.this,front_activity.class);
+                        startActivity(intent);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+                    case R.id.Perfil_Menu:
+                        Intent intent2 = new Intent(front_activity.this,perfil.class);
+                        startActivity(intent2);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+                    case R.id.Agregar_Menu:
+                        Intent intent3 = new Intent(front_activity.this,Agregar.class);
+                        startActivity(intent3);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+                    case R.id.Especialistas_Menu:
+                        Intent intent4 = new Intent(front_activity.this,frontExpertos.class);
+                        startActivity(intent4);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+                    case R.id.Cerrar_Menu:
+                        FirebaseAuth.getInstance().signOut();
+                        Intent intent5 = new Intent(front_activity.this,iniciarSesion.class);
+                        startActivity(intent5);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+
+                }
+                return true;
+            }
+        });
         //rvPrincipal1 = findViewById(R.id.rvPrincipal1);
 
         btnExpertos_front.setOnClickListener(new View.OnClickListener() {
@@ -271,4 +335,9 @@ public class front_activity extends AppCompatActivity implements Interfaz {
         startActivity(intent);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+            FirebaseAuth.getInstance().signOut();
+    }
 }

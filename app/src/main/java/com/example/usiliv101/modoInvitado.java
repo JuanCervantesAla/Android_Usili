@@ -61,6 +61,7 @@ public class modoInvitado extends AppCompatActivity implements Interfaz {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modo_invitado);
+        FirebaseAuth.getInstance().signOut();
 
         btnRegistrar_Invitado = findViewById(R.id.btnRegistrar_Invitado);
         recyclerView = findViewById(R.id.rvArticulos_Front);
@@ -114,7 +115,7 @@ public class modoInvitado extends AppCompatActivity implements Interfaz {
 
     @Override
     public void clickEnItem(int posicion) {
-        Intent intent = new Intent(modoInvitado.this,Post.class);
+        Intent intent = new Intent(modoInvitado.this,postInvitado.class);
         intent.putExtra("Identificador",list.get(posicion).getId());
         intent.putExtra("Titulo",list.get(posicion).getTitulo());
         intent.putExtra("Autor",list.get(posicion).getAutor());

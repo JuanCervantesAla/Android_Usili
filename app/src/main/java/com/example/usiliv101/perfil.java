@@ -2,8 +2,11 @@ package com.example.usiliv101;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
@@ -13,6 +16,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.renderscript.ScriptGroup;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -22,14 +26,15 @@ import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
-import com.example.usiliv101.databinding.ActivityPerfilBinding;
 import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -51,6 +56,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.UUID;
 
+
+
 public class perfil extends AppCompatActivity {
 
     //Atributos de Java
@@ -60,6 +67,11 @@ public class perfil extends AppCompatActivity {
     Button btnCerrarsesion_perfil, btnCambiarontrasena_perfil;
     //String para guardar fecha y hora en la que se guardo una foto de perfil
     String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+
+    DrawerLayout drawerLayout;
+    NavigationView menuNavegacion;
+    Toolbar toolbar;
+    ActionBarDrawerToggle actionBarDrawerToggle;
 
     private Switch switch1;
 
@@ -74,6 +86,14 @@ public class perfil extends AppCompatActivity {
 
     //Atributo extra
     public Uri imagenUri;//Atributo contenedor de la URL de una imagen en particular
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+        if(actionBarDrawerToggle.onOptionsItemSelected(item)){
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +113,53 @@ public class perfil extends AppCompatActivity {
         imgVFoto_Perfil = findViewById(R.id.imgVFoto_Perfil);
         final TextView txtCorreo_enPerfil = findViewById(R.id.txtEmailRecipiente_Perfil);
         final TextView txtEdad_enPerfil = findViewById(R.id.txtPasswordRecipiente_Perfil);
+
+        drawerLayout = findViewById(R.id.drawerLayout);
+        menuNavegacion = findViewById(R.id.menuNavegacion);
+
+        //Menu
+        actionBarDrawerToggle =new ActionBarDrawerToggle(this,drawerLayout,R.string.menu_Open,R.string.menu_Close);
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        menuNavegacion.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.home_Menu:
+                        Intent intent = new Intent(perfil.this,front_activity.class);
+                        startActivity(intent);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+                    case R.id.Perfil_Menu:
+                        Intent intent2 = new Intent(perfil.this,perfil.class);
+                        startActivity(intent2);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+                    case R.id.Agregar_Menu:
+                        Intent intent3 = new Intent(perfil.this,Agregar.class);
+                        startActivity(intent3);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+                    case R.id.Especialistas_Menu:
+                        Intent intent4 = new Intent(perfil.this,frontExpertos.class);
+                        startActivity(intent4);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.Cerrar_Menu:
+                        FirebaseAuth.getInstance().signOut();
+                        Intent intent5 = new Intent(perfil.this,iniciarSesion.class);
+                        startActivity(intent5);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+                }
+                return true;
+            }
+        });
 
         //Inicialización de variables de firebase
         usuario = FirebaseAuth.getInstance().getCurrentUser();//Obtengo al usuario actual
