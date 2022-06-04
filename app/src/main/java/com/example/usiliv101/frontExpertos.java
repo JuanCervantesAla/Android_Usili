@@ -56,7 +56,7 @@ public class frontExpertos extends AppCompatActivity implements Interfaz{
         menuNavegacion = findViewById(R.id.menuNavegacion);
         imageView4 = findViewById(R.id.imageView4);
 
-        /*
+
         //Menu
         actionBarDrawerToggle =new ActionBarDrawerToggle(this,drawerLayout,R.string.menu_Open,R.string.menu_Close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
@@ -101,7 +101,7 @@ public class frontExpertos extends AppCompatActivity implements Interfaz{
             }
         });
 
-         */
+
 
         imageView4.setOnClickListener(new View.OnClickListener() {
             @Override

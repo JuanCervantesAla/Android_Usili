@@ -13,6 +13,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -69,13 +70,7 @@ public class front_activity extends AppCompatActivity implements Interfaz {
     //Variables del recycle
     RecyclerView rvPrincipal1;
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item){
-        if(actionBarDrawerToggle.onOptionsItemSelected(item)){
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +85,8 @@ public class front_activity extends AppCompatActivity implements Interfaz {
         btnExpertos_front = findViewById(R.id.btnExpertos_front);
         drawerLayout = findViewById(R.id.drawerLayout);
         menuNavegacion = findViewById(R.id.menuNavegacion);
+
+
 
         //Menu
         actionBarDrawerToggle =new ActionBarDrawerToggle(this,drawerLayout,R.string.menu_Open,R.string.menu_Close);
@@ -336,8 +333,17 @@ public class front_activity extends AppCompatActivity implements Interfaz {
     }
 
     @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+        if(actionBarDrawerToggle.onOptionsItemSelected(item)){
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
             FirebaseAuth.getInstance().signOut();
     }
+
 }
