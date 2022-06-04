@@ -67,6 +67,7 @@ public class Agregar extends AppCompatActivity {
     private DatabaseReference reference2;//Ruta para la tabla perfiles, se guarda la fecha y la URL vease linea 230
     private DatabaseReference dbApoyo;
     private DatabaseReference  referenciaURL;
+    private FirebaseUser userId;
 
     final String randomkey  = UUID.randomUUID().toString();//Creo una llave random para almacenar las imagenes en una carpeta
     private Object ValueEventListener;
@@ -491,11 +492,12 @@ public class Agregar extends AppCompatActivity {
         String materiales = "Materiales: " + edtEMateriales_Agregar.getText().toString().trim();
         String pasos = "Pasos: " + edtEPasos_Agregar.getText().toString().trim();
         String autor = " ";
+        String IdU = FirebaseAuth.getInstance().getCurrentUser().getUid();
         FirebaseUser usuario = FirebaseAuth.getInstance().getCurrentUser();
         if (usuario != null) {
             autor = "Autor: " +usuario.getEmail();
         } else {
-            autor = "Erro de usuario ";
+            autor = "Error de usuario ";
         }
         String enlace = Enlace;
         String enlace2 = Enlace2;
@@ -504,13 +506,13 @@ public class Agregar extends AppCompatActivity {
         String video = Video;
         txtEscondido4_Agregar.setText(enlace);
         txtEscondido_Agregar.setText(enlace2);
-        CargarBase(titulo, pasos, materiales, autor, nuevoId, enlace, mayorTrece, enlace2,enlace3,pdf,video);
+        CargarBase(titulo, pasos, materiales, autor, nuevoId, enlace, mayorTrece, enlace2,enlace3,pdf,video,IdU);
     }
 
 
 
-    private void CargarBase(String titulo, String pasos, String materiales,String autor, String nuevoId, String enlace,String mayorTrece,String enlace2,String enlace3,String Pdf,String video){
-        Articulos articulo =  new Articulos(titulo,pasos,materiales,autor,nuevoId,enlace,mayorTrece,enlace2,enlace3,Pdf,video);
+    private void CargarBase(String titulo, String pasos, String materiales,String autor, String nuevoId, String enlace,String mayorTrece,String enlace2,String enlace3,String Pdf,String video,String IdU){
+        Articulos articulo =  new Articulos(titulo,pasos,materiales,autor,nuevoId,enlace,mayorTrece,enlace2,enlace3,Pdf,video,IdU);
         FirebaseDatabase.getInstance().getReference("Articulos")
                 .child(randomkey).setValue(articulo).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
