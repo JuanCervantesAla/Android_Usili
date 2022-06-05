@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -133,7 +134,11 @@ public class front_activity extends AppCompatActivity implements Interfaz {
                         startActivity(intent6);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
-
+                    case R.id.Ayudo_Menu:
+                        String url = "http://proyectosinformaticatnl.ceti.mx/usiliweb/";
+                        Uri enlace = Uri.parse(url);
+                        Intent intent7 = new Intent(Intent.ACTION_VIEW,enlace);
+                        startActivity(intent7);
 
                 }
                 return true;
