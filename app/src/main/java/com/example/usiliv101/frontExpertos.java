@@ -58,83 +58,88 @@ public class frontExpertos extends AppCompatActivity implements Interfaz{
 
 
         //Menu
-        actionBarDrawerToggle =new ActionBarDrawerToggle(this,drawerLayout,R.string.menu_Open,R.string.menu_Close);
+    actionBarDrawerToggle =new ActionBarDrawerToggle(this,drawerLayout,R.string.menu_Open,R.string.menu_Close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         menuNavegacion.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.home_Menu:
-                        Intent intent = new Intent(frontExpertos.this,front_activity.class);
-                        startActivity(intent);
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()){
+                case R.id.home_Menu:
+                    Intent intent = new Intent(frontExpertos.this,front_activity.class);
+                    startActivity(intent);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    break;
 
-                    case R.id.Perfil_Menu:
-                        Intent intent2 = new Intent(frontExpertos.this,perfil.class);
-                        startActivity(intent2);
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
+                case R.id.Perfil_Menu:
+                    Intent intent2 = new Intent(frontExpertos.this,perfil.class);
+                    startActivity(intent2);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    break;
 
-                    case R.id.Agregar_Menu:
-                        Intent intent3 = new Intent(frontExpertos.this,Agregar.class);
-                        startActivity(intent3);
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
+                case R.id.Agregar_Menu:
+                    Intent intent3 = new Intent(frontExpertos.this,Agregar.class);
+                    startActivity(intent3);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    break;
 
-                    case R.id.Especialistas_Menu:
-                        Intent intent4 = new Intent(frontExpertos.this,frontExpertos.class);
-                        startActivity(intent4);
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-                    case R.id.Cerrar_Menu:
-                        FirebaseAuth.getInstance().signOut();
-                        Intent intent5 = new Intent(frontExpertos.this,iniciarSesion.class);
-                        startActivity(intent5);
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
+                case R.id.Especialistas_Menu:
+                    Intent intent4 = new Intent(frontExpertos.this,frontExpertos.class);
+                    startActivity(intent4);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    break;
+                case R.id.Cerrar_Menu:
+                    FirebaseAuth.getInstance().signOut();
+                    Intent intent5 = new Intent(frontExpertos.this,iniciarSesion.class);
+                    startActivity(intent5);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    break;
+                case R.id.Mis_Menu:
+                    Intent intent6 = new Intent(frontExpertos.this,front_Misart.class);
+                    startActivity(intent6);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    break;
 
-                }
-                return true;
             }
-        });
+            return true;
+        }
+    });
 
 
 
         imageView4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(frontExpertos.this,front_activity.class);
-                startActivity(intent);
-            }
-        });
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(frontExpertos.this,front_activity.class);
+            startActivity(intent);
+        }
+    });
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this ));
 
-        list = new ArrayList<>();
-        adaptadorRVE= new AdaptadorRVE(this,list,this);
+    list = new ArrayList<>();
+    adaptadorRVE= new AdaptadorRVE(this,list,this);
         recyclerView.setAdapter(adaptadorRVE);
-        referenceRV= FirebaseDatabase.getInstance().getReference("Trabajadores");
+    referenceRV= FirebaseDatabase.getInstance().getReference("Trabajadores");
 
         referenceRV.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    trabajador tra = dataSnapshot.getValue(trabajador.class);
-                    list.add(tra);
-                }
-                adaptadorRVE.notifyDataSetChanged();
+        @Override
+        public void onDataChange(@NonNull DataSnapshot snapshot) {
+            for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+                trabajador tra = dataSnapshot.getValue(trabajador.class);
+                list.add(tra);
             }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            adaptadorRVE.notifyDataSetChanged();
+        }
+        @Override
+        public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
+        }
+    });
 
-    }
+}
 
     @Override
     public void clickEnItem(int posicion) {

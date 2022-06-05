@@ -155,6 +155,11 @@ public class perfil extends AppCompatActivity {
                         startActivity(intent5);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
+                    case R.id.Mis_Menu:
+                        Intent intent6 = new Intent(perfil.this,front_Misart.class);
+                        startActivity(intent6);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
 
                 }
                 return true;

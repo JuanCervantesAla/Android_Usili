@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".postMios"
+            android:exported="false" />
+        <activity
+            android:name=".front_Misart"
+            android:exported="false" />
+        <activity
             android:name=".postInvitado"
             android:exported="false" />
         <activity
@@ -71,7 +77,8 @@
             android:exported="false" />
         <activity
             android:name=".front_activity"
-            android:exported="false" />
+            android:exported="false"
+            />
         <activity
             android:name=".login"
             android:exported="false" />

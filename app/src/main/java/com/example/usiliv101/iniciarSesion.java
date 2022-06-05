@@ -112,26 +112,22 @@ public class iniciarSesion extends AppCompatActivity {
         String contrasena = edtPassword_iniciar_sesion.getText().toString().trim();
 
         if(correo.isEmpty()){
-            edtEmail_iniciar_sesion.setError("¡Ingresa un correo por favor!");
-            edtEmail_iniciar_sesion.requestFocus();
+            Toast.makeText(getApplicationContext(),"Ingresa un correo",Toast.LENGTH_SHORT).show();
             return;
         }
 
         if(!Patterns.EMAIL_ADDRESS.matcher(correo).matches()){
-            edtEmail_iniciar_sesion.setError("¡Por favor ingresa un correo autentico!");
-            edtEmail_iniciar_sesion.requestFocus();
+            Toast.makeText(getApplicationContext(),"Por favor ingresa un correo autentico",Toast.LENGTH_SHORT).show();
             return;
         }
 
         if(contrasena.isEmpty()){
-            edtPassword_iniciar_sesion.setError("¡Ingresa una contrasena por favor!");
-            edtPassword_iniciar_sesion.requestFocus();
+            Toast.makeText(getApplicationContext(),"Ingresa una contrasena por favor",Toast.LENGTH_SHORT).show();
             return;
         }
 
         if(contrasena.length()<6){
-            edtPassword_iniciar_sesion.setError("¡La contrasena debe tener 6 caracteres minimo!");
-            edtPassword_iniciar_sesion.requestFocus();
+            Toast.makeText(getApplicationContext(),"La contrasena debe tener 6 caracteres minimo",Toast.LENGTH_SHORT).show();
             return;
         }
 

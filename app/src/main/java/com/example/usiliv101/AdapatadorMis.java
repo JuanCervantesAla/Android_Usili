@@ -1,0 +1,169 @@
+package com.example.usiliv101;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+
+public class AdapatadorMis extends RecyclerView.Adapter<AdapatadorMis.MyViewHolder> implements View.OnClickListener,Interfaz{
+//Variable para contener todo lo que tenga en interfaz
+
+    //Variable para contener todo lo que tenga en interfaz
+    private final Interfaz interfaz;
+    Context context;
+    ArrayList<Articulos> list;
+    ArrayList<Articulos> list2;
+    private View.OnClickListener listener;
+    FirebaseUser userUID;
+
+    public AdapatadorMis(Context context,ArrayList<Articulos> list,Interfaz interfaz){
+        this.context = context;
+        this.list = list;
+        //Creo el this para tomar los datos de la interfaz
+        this.interfaz=interfaz;
+        list2  =new ArrayList<>();
+        list2.addAll(list);
+
+    }
+
+    @NonNull
+    @Override
+    public AdapatadorMis.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v  =  LayoutInflater.from(context).inflate(R.layout.item,parent,false);
+        v.setOnClickListener(this);
+        return new AdapatadorMis.MyViewHolder(v,interfaz);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull  AdapatadorMis.MyViewHolder holder, int position) {
+
+        int newPosition = holder.getAdapterPosition();
+        Articulos art = list.get(position);
+        Articulos art2 = list.get(position);
+        String Key = art.getKey();
+        String Id = art.getId();
+        String Uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        if(Uid.equals(Key)) {
+            holder.itemView.setVisibility(View.VISIBLE);
+            holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            holder.txtTitulo_enRV.setText(art2.getTitulo());
+            holder.txtID_enRV.setText(art2.getId());
+            holder.txtAutor_enRV.setText(art2.getAutor());
+
+            holder.btnBorrar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    userUID = FirebaseAuth.getInstance().getCurrentUser();
+                    //String comparador = userUID;
+                    if (userUID == null) {
+                        // No user is signed in
+                        Toast.makeText(context.getApplicationContext(), "NO REGISTRADO", Toast.LENGTH_SHORT).show();
+                    } else {
+                        //String usuarioBase = (String) userUID;
+                        if (Uid.equals(Key)) {
+                            list.remove(newPosition);
+                            notifyItemRemoved(newPosition);
+                            notifyItemRangeChanged(newPosition, list.size());
+
+                            Query query = FirebaseDatabase.getInstance().getReference("Articulos")
+                                    .orderByChild("id")
+                                    .equalTo(Id);
+                            query.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    if (snapshot.hasChildren()) {
+                                        DataSnapshot firstChild = snapshot.getChildren().iterator().next();
+                                        firstChild.getRef().removeValue();
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+                        } else {
+                            Toast.makeText(context.getApplicationContext(), "Usted no subió este articulo", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+            });
+            Glide.with(context).load(list.get(position).getEnlace()).into(holder.imgV_enRV);
+        }else{
+            holder.itemView.setVisibility(View.INVISIBLE);
+            holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
+        }
+
+    }
+
+    @Override
+    public int getItemCount() {
+            return list.size();
+    }
+
+    @Override
+    public void clickEnItem(int posicion) {
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(listener!=null){
+            listener.onClick(view);
+        }
+
+    }
+
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+
+    public static class MyViewHolder extends RecyclerView.ViewHolder{
+
+        TextView txtTitulo_enRV,txtAutor_enRV,txtID_enRV,txtMateriales_enRV,txtPasos_enRV;
+        ImageView imgV_enRV,btnBorrar;
+
+        //Agrego el atributo de interfaz
+        public MyViewHolder(@NonNull View itemView,Interfaz interfaz) {
+            super(itemView);
+
+            txtTitulo_enRV = itemView.findViewById(R.id.txtTitulo_enRV);
+            txtAutor_enRV = itemView.findViewById(R.id.txtAutor_enRV);
+            txtID_enRV = itemView.findViewById(R.id.txtID_enRV);
+            imgV_enRV = itemView.findViewById(R.id.imgV_enRV);
+            btnBorrar = itemView.findViewById(R.id.btnBorrar);
+            //txtMateriales_enRV = itemView.findViewById(R.id.txtMateriales_enRV);
+            //txtPasos_enRV = itemView.findViewById(R.id.txtPasos_enRV);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(interfaz !=null){
+                        int pos = getAdapterPosition();
+                        if(pos!= RecyclerView.NO_POSITION){
+                            interfaz.clickEnItem(pos);
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+}

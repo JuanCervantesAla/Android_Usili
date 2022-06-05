@@ -201,25 +201,25 @@ public class registroExpertos extends AppCompatActivity {
 
         //Validaciones de cada editText o caja de texto
         if(telefono.isEmpty()){
-            edtTelefono_Expertos.setError("¡Ingresa un correo o un telefono por favor!");
-            edtEmail_Expertos.requestFocus();
+            Toast.makeText(getApplicationContext(),"Ingresa un telefono por favor",Toast.LENGTH_SHORT).show();
             return;
         }
+        if(telefono.length()>10 || telefono.length()<=0){
+            Toast.makeText(getApplicationContext(),"Ingresa un telefono de verdad porfavor",Toast.LENGTH_SHORT).show();
+        }
         if(correo.isEmpty()){
-            edtEmail_Expertos.setError("¡Ingresa un correo o un telefono por favor!");
-            edtEmail_Expertos.requestFocus();
+            Toast.makeText(getApplicationContext(),"Ingresa un correo  por favor",Toast.LENGTH_SHORT).show();
             return;
         }
 
         //Valida de la paqueteria patterns si el correo es un correo de verdad
         if(!Patterns.EMAIL_ADDRESS.matcher(correo).matches()){
-            edtEmail_Expertos.setError("¡Por favor ingresa un correo autentico!");
-            edtEmail_Expertos.requestFocus();
+            Toast.makeText(getApplicationContext(),"Por favor ingresa un correo autentico",Toast.LENGTH_SHORT).show();
             return;
         }
 
         if(!ocBTerminos_Expertos.isChecked()){
-            Toast.makeText(registroExpertos.this, "Acepta los terminos y condiciones", Toast.LENGTH_SHORT).show();
+            Toast.makeText(registroExpertos.this, "Ingresa un correo o un telefono por favor", Toast.LENGTH_SHORT).show();
         }
 
         if(rReparador.isChecked()){

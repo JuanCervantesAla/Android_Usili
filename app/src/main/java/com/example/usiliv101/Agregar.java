@@ -115,51 +115,12 @@ public class Agregar extends AppCompatActivity {
         scrollViewA = findViewById(R.id.scrollViewA);
         scrollViewA.smoothScrollTo(0,0);
 
-        //Menu
-        /*
-        actionBarDrawerToggle =new ActionBarDrawerToggle(this,drawerLayout,R.string.menu_Open,R.string.menu_Close);
-        drawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        menuNavegacion.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.home_Menu:
-                        Intent intent = new Intent(Agregar.this,front_activity.class);
-                        startActivity(intent);
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-
-                    case R.id.Perfil_Menu:
-                        Intent intent2 = new Intent(Agregar.this,perfil.class);
-                        startActivity(intent2);
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-
-                    case R.id.Agregar_Menu:
-                        Intent intent3 = new Intent(Agregar.this,Agregar.class);
-                        startActivity(intent3);
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-
-                    case R.id.Especialistas_Menu:
-                        Intent intent4 = new Intent(Agregar.this,frontExpertos.class);
-                        startActivity(intent4);
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-
-                }
-                return true;
-            }
-        });
-         */
 
 
         sw_Agregar.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    mayorTrece="Y";
+                    mayorTrece="15";
                 }
 
                 else{
@@ -431,7 +392,6 @@ public class Agregar extends AppCompatActivity {
                         //txtEscondido_Agregar.setText(G);
                         Glide.with(getApplicationContext()).load(uri).into(imgVImagen_Agregar);
                         //reference2.child(pId).child("IdUsuario").setValue(idUsuario);
-                        Toast.makeText(Agregar.this, "Se subió correctamente", Toast.LENGTH_SHORT).show();//Muestro un mensaje de que se subió correctamente
                         subirFoto2(G,nuevoId,uri2,uri3,uripdf,videoUri);
                     }
                 });
@@ -474,7 +434,6 @@ public class Agregar extends AppCompatActivity {
                         //txtEscondido_Agregar.setText(G);
                         Glide.with(getApplicationContext()).load(uri).into(imgVImagen2_Agregar);
                         //reference2.child(pId).child("IdUsuario").setValue(idUsuario);
-                        Toast.makeText(Agregar.this, "Se subió correctamente", Toast.LENGTH_SHORT).show();//Muestro un mensaje de que se subió correctamente
                         subirFoto3(G1,G,nuevoId,uri3,uripdf,videoUri);
                     }
                 });
@@ -516,7 +475,6 @@ public class Agregar extends AppCompatActivity {
                         //txtEscondido_Agregar.setText(G);
                         Glide.with(getApplicationContext()).load(uri).into(imgVImagen3_Agregar);
                         //reference2.child(pId).child("IdUsuario").setValue(idUsuario);
-                        Toast.makeText(Agregar.this, "Se subió correctamente", Toast.LENGTH_SHORT).show();//Muestro un mensaje de que se subió correctamente
                         //Consulta(G1,G2,G,nuevoId);
                         subirPdf(pdfUri,G1,G2,nuevoId,G,videoUri);
                     }
@@ -540,14 +498,14 @@ public class Agregar extends AppCompatActivity {
 
     public void Consulta(String Enlace, String Enlace2, String Enlace3,String Pdf,String Video, String nuevoId){
         usuario usua = new usuario();
-        String titulo = "Titulo: " + edtETitulo_Agregar.getText().toString().trim();
-        String materiales = "Materiales: " + edtEMateriales_Agregar.getText().toString().trim();
-        String pasos = "Pasos: " + edtEPasos_Agregar.getText().toString().trim();
+        String titulo =edtETitulo_Agregar.getText().toString().trim();
+        String materiales =edtEMateriales_Agregar.getText().toString().trim();
+        String pasos =edtEPasos_Agregar.getText().toString().trim();
         String autor = " ";
         String IdU = FirebaseAuth.getInstance().getCurrentUser().getUid();
         FirebaseUser usuario = FirebaseAuth.getInstance().getCurrentUser();
         if (usuario != null) {
-            autor = "Autor: " +usuario.getEmail();
+            autor = usuario.getEmail();
         } else {
             autor = "Error de usuario ";
         }
@@ -596,25 +554,34 @@ public class Agregar extends AppCompatActivity {
 
 
         if (titulo.isEmpty()) {
-            edtETitulo_Agregar.setError("Ingresa un titulo por favor");
-            edtETitulo_Agregar.requestFocus();
+            Toast.makeText(Agregar.this, "Ingresa un titulo por favor", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (titulo.length() <= 10 || titulo.length()>=20) {
-            edtETitulo_Agregar.setError("Ingresa un titulo mas largo");
-            edtETitulo_Agregar.requestFocus();
+        if (titulo.length() <= 10) {
+            Toast.makeText(Agregar.this, "Ingresa un titulo mas largo", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (titulo.length()>=40) {
+            Toast.makeText(Agregar.this, "Ingresa un titulo mas corto", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (materiales.length()<30) {
+            Toast.makeText(Agregar.this, "Pocos caracteres, no corresponde a materiales de verdad", Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (materiales.isEmpty()) {
-            edtEMateriales_Agregar.setError("Ingresa los materiales");
-            edtEMateriales_Agregar.requestFocus();
+            Toast.makeText(Agregar.this, "Ingresa los materiales", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (pasos.length()<30) {
+            Toast.makeText(Agregar.this, "Ingresa los pasos a seguir", Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (pasos.isEmpty()) {
-            edtEPasos_Agregar.setError("Ingresa los pasos a seguir");
-            edtEPasos_Agregar.requestFocus();
+            Toast.makeText(Agregar.this, "Pocoas pasos, no corresponden a pasos de verdad", Toast.LENGTH_SHORT).show();
             return;
         }
         /*

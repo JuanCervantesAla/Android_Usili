@@ -52,9 +52,9 @@
             android:layout_width="334dp"
             android:layout_height="61dp"
             android:layout_marginTop="8dp"
+            android:background="@drawable/edt_background"
             android:drawablePadding="10dp"
             android:drawableLeft="@drawable/ic_baseline_short_text_24"
-            android:background="@drawable/edt_background"
             android:ems="10"
             android:hint="Ingrese su correo"
             android:inputType="textEmailAddress"
@@ -147,8 +147,8 @@
 
         <Button
             android:id="@+id/btnTrabajador_Iniciar"
-            android:layout_width="210dp"
-            android:layout_height="53dp"
+            android:layout_width="293dp"
+            android:layout_height="49dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/buttoncolor"
             android:text="Registrate como trabajador"

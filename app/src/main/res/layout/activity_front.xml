@@ -31,9 +31,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:fontFamily="sans-serif"
-            android:text="¡ B i e n v e n i d o !"
-            android:textColor="#26abff"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="Bienvenido"
+            android:textColor="@color/black"
             android:textSize="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.492"
@@ -45,8 +45,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="¿Qué repararemos el dia de hoy?"
-            android:textSize="15dp"
             android:textColor="@color/black"
+            android:textSize="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtTitulo_Front" />
@@ -62,39 +62,45 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="?android:attr/galleryItemBackground" />
 
-        <Button
-            android:id="@+id/btnAgregar_front"
-            android:layout_width="151dp"
-            android:layout_height="52dp"
-            android:layout_marginStart="224dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/buttoncolor"
-            android:text="Agregar"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/btnExpertos_front"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="28dp"
             android:background="@drawable/buttoncolor"
             android:text="Ver los expertos"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toStartOf="@+id/btnAgregar_front"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            app:layout_constraintVertical_bias="0.277" />
+
+        <Button
+            android:id="@+id/btnAgregar_front"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="36dp"
+            android:background="@drawable/buttoncolor"
+            android:text="Agregar articulo"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            app:layout_constraintVertical_bias="0.333" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvArticulos_Front"
-            android:layout_width="386dp"
-            android:layout_height="248dp"
-            android:layout_marginTop="80dp"
+            android:layout_width="394dp"
+            android:layout_height="390dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.428"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtSlogan_Front" />
+            app:layout_constraintTop_toBottomOf="@+id/search" />
 
         <TextView
             android:id="@+id/txtEscondido_Front"
@@ -106,32 +112,30 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/search"
-            android:layout_width="318dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="24dp"
-            app:layout_constraintBottom_toTopOf="@+id/rvArticulos_Front"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.453"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtSlogan_Front"
-            app:layout_constraintVertical_bias="0.135" />
-
-
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="28dp"
-            android:text="¿Se te dificulto\n alguna problematica?"
+            android:layout_marginTop="20dp"
+            android:text="¿Se te dificultó\n alguna problematica?"
             android:textColor="@color/black"
             android:textSize="14dp"
-            app:layout_constraintBottom_toTopOf="@+id/btnExpertos_front"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.133"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rvArticulos_Front" />
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search"
+            android:layout_width="391dp"
+            android:layout_height="66dp"
+            android:background="@drawable/edt_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtSlogan_Front" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView

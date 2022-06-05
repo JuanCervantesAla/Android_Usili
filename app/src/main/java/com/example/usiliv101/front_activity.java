@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import androidx.appcompat.widget.SearchView;
@@ -62,8 +63,8 @@ public class front_activity extends AppCompatActivity implements Interfaz {
     ImageView iconoperfil,imgVFoto_Front;
     Button btnAgregar_front,btnMis_front,btnExpertos_front;
     private FirebaseUser usuario;
-    private DatabaseReference reference;
     private DatabaseReference referenceRV;
+    private DatabaseReference reference;
     private String idUsuario;
     private StorageReference reference3;//Referencia hacia el almacenamiento, la imagen de perfil
 
@@ -85,7 +86,6 @@ public class front_activity extends AppCompatActivity implements Interfaz {
         btnExpertos_front = findViewById(R.id.btnExpertos_front);
         drawerLayout = findViewById(R.id.drawerLayout);
         menuNavegacion = findViewById(R.id.menuNavegacion);
-
 
 
         //Menu
@@ -125,6 +125,12 @@ public class front_activity extends AppCompatActivity implements Interfaz {
                         FirebaseAuth.getInstance().signOut();
                         Intent intent5 = new Intent(front_activity.this,iniciarSesion.class);
                         startActivity(intent5);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+                    case R.id.Mis_Menu:
+                        Intent intent6 = new Intent(front_activity.this,front_Misart.class);
+                        startActivity(intent6);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
 
@@ -212,38 +218,13 @@ public class front_activity extends AppCompatActivity implements Interfaz {
             e.printStackTrace();
         }
 
-/*
-        final TextView txtEmail_home = findViewById(R.id.txtEmail_home);
 
-        //Recibir datos mediante Datasnapshot
-        reference.child(idUsuario).addListenerForSingleValueEvent(new ValueEventListener() {
-            //Este sirve para cuando se pase los datos 
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                 usuario perfilUsuario = snapshot.getValue(usuario.class);
-
-                 if(perfilUsuario !=null){
-                     String correo = perfilUsuario.correo;
-                     //La edad esta comentada para utilizarlo en la activity del perfil
-                     //String edad = perfilUsuario.edad;
-
-                     txtEmail_home.setText(correo);
-
-                 }
-            }
-            //Este si es que hay un error al momento de recibir datos
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(front_activity.this, "No pudimos recuperar los datos", Toast.LENGTH_SHORT).show();
-            }
-        });//Fin de el correo en textView*/
-
-        //Inicio del recycle View
 
     recyclerView.setHasFixedSize(true);
     recyclerView.setLayoutManager(new LinearLayoutManager(this ));
 
     list = new ArrayList<>();
+    list.clear();
     adaptadorRV= new AdaptadorRV(this,list,this);
     recyclerView.setAdapter(adaptadorRV);
     referenceRV= FirebaseDatabase.getInstance().getReference("Articulos");
@@ -254,27 +235,15 @@ public class front_activity extends AppCompatActivity implements Interfaz {
             for(DataSnapshot dataSnapshot: snapshot.getChildren()){
                 Articulos art = dataSnapshot.getValue(Articulos.class);
                 list.add(art);
+                adaptadorRV.notifyDataSetChanged();
             }
-            adaptadorRV.notifyDataSetChanged();
         }
         @Override
         public void onCancelled(@NonNull DatabaseError error) {
 
         }
     });
-    /*
-    adaptadorRV.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(front_activity.this,Post.class);
-            startActivity(intent);
-            Articulos art = new Articulos();
-            String ID = art.getId();
-            Toast.makeText(front_activity.this, ID, Toast.LENGTH_SHORT).show();
-            Post objetito = new Post();
-            objetito.recibirDatosFront(ID);
-        }
-    });*/
+
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

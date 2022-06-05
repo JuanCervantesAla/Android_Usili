@@ -169,48 +169,41 @@ public class registro extends AppCompatActivity  {
 
         //Validaciones de cada editText o caja de texto
         if(correo.isEmpty()){
-            edtEmail_Registro.setError("¡Ingresa un correo por favor!");
-            edtEmail_Registro.requestFocus();
+            Toast.makeText(getApplicationContext(),"Ingresa un correo por favor",Toast.LENGTH_SHORT).show();
             return;
         }
 
         //Valida de la paqueteria patterns si el correo es un correo de verdad
         if(!Patterns.EMAIL_ADDRESS.matcher(correo).matches()){
             edtEmail_Registro.setError("¡Por favor ingresa un correo autentico!");
-            edtEmail_Registro.requestFocus();
+            Toast.makeText(getApplicationContext(),"Por favor ingresa un correo autentico",Toast.LENGTH_SHORT).show();
             return;
         }
 
         if(edad.isEmpty()){
-            edtEdad_Registro.setError("¡Ingresa una edad por favor!");
-            edtEdad_Registro.requestFocus();
+            Toast.makeText(getApplicationContext(),"Ingresa una edad por favor",Toast.LENGTH_SHORT).show();
             return;
         }
 
         if(edadNumero<=0 || edadNumero>90){
-            edtEdad_Registro.setError("!Ingresa una edad real¡");
-            edtEdad_Registro.requestFocus();
+            Toast.makeText(getApplicationContext(),"Ingresa una edad real",Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (password.isEmpty()){
-            edtPassword_Registro.setError("¡Ingresa una contrasena por favor!");
-            edtPassword_Registro.requestFocus();
+            Toast.makeText(getApplicationContext(),"Ingresa una contrasena por favor",Toast.LENGTH_SHORT).show();
             return;
         }
         if(passwordconfirm.isEmpty()){
-            edtPasswordConfirmar_Registro.setError("¡Vuelve a ingresar la misma contrasena!");
-            edtPasswordConfirmar_Registro.requestFocus();
+            Toast.makeText(getApplicationContext(),"Vuelve a ingresar la misma contrasena",Toast.LENGTH_SHORT).show();
             return;
         }
         if(password.length()<6){
-            edtPassword_Registro.setError("¡La contraseña debe tener al menos 6 caracteres!");
-            edtPassword_Registro.requestFocus();
+            Toast.makeText(getApplicationContext(),"La contraseña debe tener al menos 6 caracteres",Toast.LENGTH_SHORT).show();
             return;
         }
         if(!passwordconfirm.equals(password)){
-            edtPassword_Registro.setError("¡Las contrasenas no coinciden!");
-            edtPassword_Registro.requestFocus();
+            Toast.makeText(getApplicationContext(),"Las contrasenas no coinciden",Toast.LENGTH_SHORT).show();
             return;
         }
         if(!ocBTerminos_Registro.isChecked()){

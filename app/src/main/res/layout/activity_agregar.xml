@@ -41,26 +41,27 @@
                 android:id="@+id/txtTitulo_Agregar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="64dp"
+                android:layout_marginTop="68dp"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:text="Añade tu articulo"
                 android:textColor="#26abff"
                 android:textSize="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.361"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/txtLogo_Agregar"
-                android:layout_width="170dp"
-                android:layout_height="77dp"
-                android:layout_marginTop="4dp"
+                android:layout_width="124dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="12dp"
                 android:fontFamily="sans-serif-black"
                 android:text="USILI"
                 android:textColor="#77DD77"
                 android:textSize="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.053"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -69,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:text="Titulo del árticulo"
+                android:text="Titulo del árticulo(10 a 40 caracteres)"
                 android:textSize="18dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.047"
@@ -97,7 +98,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:text="1° Agrega los materiales que se necesitaron: "
+                android:text="1° Agrega los materiales\nque se necesitaron: "
                 android:textSize="18dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.222"
@@ -125,7 +126,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="2° Agrega los pasos para llegar al objetivo"
+                android:text="2° Agrega los pasos para\nllegar al objetivo"
                 android:textSize="18dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.157"
@@ -196,7 +197,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="3° Agrega una imagen descriptiva"
+                android:text="3° Agrega 3 imagenes\ndescriptivas, no menos"
                 android:textSize="18dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.048"
@@ -218,7 +219,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
-                android:text="4° Agrega un video demostrativo"
+                android:text="4° Agrega un video demostrativo\n(Obligatorio)"
                 android:textSize="18dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imgVImagen3_Agregar" />
@@ -228,20 +229,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="28dp"
-                android:text="5°Agrega un pdf descriptivo si lo tienes"
+                android:text="5°Agrega un pdf del tema\n(No necesita ser tuyo)\n(Obligatorio, haz doble click en la caja)"
                 android:textSize="18dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btnBuscar_Agregar" />
 
             <EditText
                 android:id="@+id/edtPdf_Agregar"
-                android:layout_width="242dp"
-                android:layout_height="52dp"
+                android:layout_width="268dp"
+                android:layout_height="47dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="88dp"
-                android:drawablePadding="10dp"
-                android:drawableLeft="@drawable/ic_baseline_short_text_24"
                 android:background="@drawable/edt_background"
+                android:drawableLeft="@drawable/ic_baseline_short_text_24"
+                android:drawablePadding="10dp"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text=""
@@ -250,11 +251,12 @@
 
             <Button
                 android:id="@+id/btnContinuar_Agregar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="121dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginEnd="140dp"
                 android:background="@drawable/buttoncolor"
-                android:text="Siguiente Paso"
+                android:text="Añadir"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sw_Agregar" />
@@ -279,9 +281,9 @@
 
             <Switch
                 android:id="@+id/sw_Agregar"
-                android:layout_width="89dp"
-                android:layout_height="22dp"
-                android:text="15+"
+                android:layout_width="161dp"
+                android:layout_height="38dp"
+                android:text="Solo mayores de 15"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edtPdf_Agregar" />
@@ -308,10 +310,10 @@
 
             <ImageView
                 android:id="@+id/btnVolver_Agregar"
-                android:layout_width="85dp"
-                android:layout_height="75dp"
+                android:layout_width="77dp"
+                android:layout_height="53dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnContinuar_Agregar"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/back" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

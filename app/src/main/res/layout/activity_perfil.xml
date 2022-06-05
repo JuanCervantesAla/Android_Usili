@@ -141,10 +141,9 @@
             android:id="@+id/btnVolver_Perfil"
             android:layout_width="56dp"
             android:layout_height="55dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginBottom="24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/back" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

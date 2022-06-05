@@ -58,22 +58,6 @@ public class AdaptadorRVE extends RecyclerView.Adapter<AdaptadorRVE.MyViewHolder
         Glide.with(context).load(list.get(position).getFoto()).apply(requestOptions).into(holder.imgVE_enRV);
     }
 
-    /*
-    @Override
-    public void onBindViewHolder(@NonNull AdaptadorRV.MyViewHolder holder, int position) {
-
-        //apoyoPost pollo = new apoyoPost();
-        Articulos art = list.get(position);
-        holder.txtTitulo_enRV.setText(art.getTitulo());
-        holder.txtID_enRV.setText(art.getId());
-        holder.txtAutor_enRV.setText(art.getAutor());
-        //holder.txtMateriales_enRV.setText(art.getMateriales());
-        //holder.txtPasos_enRV.setText(art.getPasos());
-        //pollo.setTitulo(art.autor);
-
-        Glide.with(context).load(list.get(position).getEnlace()).into(holder.imgV_enRV);
-
-    }*/
 
 
     @Override

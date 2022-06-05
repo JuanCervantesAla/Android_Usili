@@ -65,8 +65,7 @@ public class contrasenaNueva extends AppCompatActivity {
         String correo = edtEmail_contrasenaNueva.getText().toString().trim();
 
         if(correo.isEmpty()){
-            edtEmail_contrasenaNueva.setError("Ey correo equivocado");
-            edtEmail_contrasenaNueva.requestFocus();
+            Toast.makeText(contrasenaNueva.this, "Correo vacio, ingresa uno", Toast.LENGTH_SHORT).show();
             return;
         }
 
